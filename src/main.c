@@ -9,7 +9,7 @@
 /*   Updated: 2022/08/16 01:16:57 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/fractol.h"
+#include "../inc/headers/fractol.h"
 
 //	Main function, thr we call the checker and if its correct start the program
 int	main(int argc, char **argv)

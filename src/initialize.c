@@ -9,7 +9,7 @@
 /*   Updated: 2022/08/16 01:21:42 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/fractol.h"
+#include "../inc/headers/fractol.h"
 
 void	init_fract(t_fractol *fractol, char select, char **argv)
 {

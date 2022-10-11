@@ -9,7 +9,7 @@
 /*   Updated: 2022/08/16 01:21:05 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/fractol.h"
+#include "../inc/headers/fractol.h"
 
 //	Function to convert a char to a double
 double	double_atoi(const char *nptr, double num, double i)

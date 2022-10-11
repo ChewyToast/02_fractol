@@ -9,7 +9,7 @@
 /*   Updated: 2022/08/16 01:18:42 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/fractol.h"
+#include "../inc/headers/fractol.h"
 
 //	Main function of the check input steep
 int	check_input(int argc, char **argv, char *set)

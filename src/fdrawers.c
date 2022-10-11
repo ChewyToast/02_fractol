@@ -9,7 +9,7 @@
 /*   Updated: 2022/08/17 22:53:07 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/fractol.h"
+#include "../inc/headers/fractol.h"
 
 void	draw_julia(t_fractol *fractol)
 {
@@ -137,7 +137,7 @@ int	get_color(int i)
 		color = 0x1183DA;
 	else if (i < 116)
 		color = 0x128BE6;
-	else if (i < 129)
+	else
 		color = 0x149AFF;
 	return (color);
 }
