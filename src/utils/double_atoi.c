@@ -9,28 +9,9 @@
 /*   Updated: 2022/08/16 01:21:05 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/headers/fractol.h"
-
-//	Function to convert a char to a double
-double	double_atoi(const char *nptr, double num, double i)
-{
-	double	symb;
-
-	symb = 1;
-	if (*nptr == '-')
-	{
-		symb = -1;
-		nptr++;
-	}
-	else if (*nptr == '+')
-		nptr++;
-	atoi_utilities(nptr, 0, &num, &i);
-	num /= i / 10;
-	return (num * symb);
-}
 
 //	Support function for "double_atoi"
-void	atoi_utilities(const char *nptr, int dec, double *num, double *i)
+static void	atoi_utilities(const char *nptr, int dec, double *num, double *i)
 {
 	while (*nptr)
 	{
@@ -48,4 +29,22 @@ void	atoi_utilities(const char *nptr, int dec, double *num, double *i)
 		}
 		nptr++;
 	}
+}
+
+//	Function to convert a char to a double
+double	double_atoi(const char *nptr, double num, double i)
+{
+	double	symb;
+
+	symb = 1;
+	if (*nptr == '-')
+	{
+		symb = -1;
+		nptr++;
+	}
+	else if (*nptr == '+')
+		nptr++;
+	atoi_utilities(nptr, 0, &num, &i);
+	num /= i / 10;
+	return (num * symb);
 }

@@ -9,7 +9,7 @@
 /*   Updated: 2022/08/16 01:20:29 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/headers/fractol.h"
+#include "../../inc/headers/mlx_and_struct.h"
 
 //	Init popup screen
 int	window_startup(t_fractol *fractol)

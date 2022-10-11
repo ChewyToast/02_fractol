@@ -10,34 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef MLX_AND_STRUC_H
+# define MLX_AND_STRUC_H
 
-// 						~ LIBRARYS ~
+//	LIBRARY FOR THE MLX FUNCTIONS
+# include "../mlx/mlx.h"
 
-//	LIBFT LIBRARY
-# include "../bmlib/bmlib.h"
+// 						~ STRUCTS ~
 
-//	LIBRARY FOR MALLOC AND FREE
-# include <stdlib.h>
+//	Function definition to be associated to a fractal
+typedef void	(*t_fdrawer)(t_fractol *fractol);
 
-// 						~ FUNCTIONS ~
+//	Containing structure of screen pointers
+typedef struct s_mlx
+{
+	void	*ptr;
+	void	*win;
+}				t_mlx;
 
-//		startup
-int		check_input(int argc, char **argv, char *set);
-void	init_fract(t_fractol *fractol, char select, char **argv);
+//	Main struct
+typedef struct s_fractol
+{
+	t_mlx		screen;
+	t_fdrawer	t_fdrawer;
+	double		zoom;
+	double		xcenter;
+	double		ycenter;
+	double		cx;
+	double		cy;
+}				t_fractol;
 
-//		utils
-double	double_atoi(const char *nptr, double num, double i);
-int		get_color(int i);
+// 						~ MACROS ~
 
-//		mlx_window
-int		window_startup(t_fractol *fractol);
-
-//		drawers
-void	draw_julia(t_fractol *fractol);
-void	draw_mandelbrot(t_fractol *fractol);
-int		drawer_utility(t_fractol *fractol,
-			double new_x_iter, double new_y_iter);
+# define W 1200
+# define H 800
+# define ITER_MAX 100
 
 #endif

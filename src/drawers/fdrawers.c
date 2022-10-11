@@ -9,7 +9,7 @@
 /*   Updated: 2022/08/17 22:53:07 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/headers/fractol.h"
+#include "../../inc/headers/mlx_and_struct.h"
 
 void	draw_julia(t_fractol *fractol)
 {
@@ -89,55 +89,3 @@ int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter)
 	return (i);
 }
 
-/* int	get_color(int i)
-{
-	int	color;
-	int a;
-	if (i < 40)
-		a = 201;
-	else
-		a = (i * 50 / 60) + 200;
-	int r = 31;
-	int g = 95;
-	int b = 142;
-	color = (((r + 256) * 256 + g) * 256 + b) & (((a + 256) * 256 + a) * 256 + a);
-
-	return (color);
-} */
-
-int	get_color(int i)
-{
-	int	color;
-
-	if (i < 2)
-		color = 0x07365A;
-	else if (i < 5)
-		color = 0x083A61;
-	else if (i < 8)
-		color = 0x09416C;
-	else if (i < 15)
-		color = 0x094573;
-	else if (i < 30)
-		color = 0x0A4A7B;
-	else if (i < 50)
-		color = 0x0A4F83;
-	else if (i < 58)
-		color = 0x0C5892;
-	else if (i < 65)
-		color = 0x0E66A9;
-	else if (i < 73)
-		color = 0x0E6AB1;
-	else if (i < 82)
-		color = 0x0F6FB8;
-	else if (i < 91)
-		color = 0x0F73C0;
-	else if (i < 100)
-		color = 0x1078C8;
-	else if (i < 108)
-		color = 0x1183DA;
-	else if (i < 116)
-		color = 0x128BE6;
-	else
-		color = 0x149AFF;
-	return (color);
-}

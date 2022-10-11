@@ -9,7 +9,10 @@
 /*   Updated: 2022/08/16 01:16:57 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/headers/fractol.h"
+#include "../../inc/headers/fractol.h"
+#include "../../inc/headers/mlx_and_struct.h"
+
+static int	program_startup(char select, char **argv);
 
 //	Main function, thr we call the checker and if its correct start the program
 int	main(int argc, char **argv)
@@ -27,7 +30,7 @@ int	main(int argc, char **argv)
 }
 
 //	Program controller function
-int	program_startup(char select, char **argv)
+static int	program_startup(char select, char **argv)
 {
 	t_fractol	fractol;
 

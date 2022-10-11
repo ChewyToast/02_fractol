@@ -11,32 +11,27 @@
 /* ************************************************************************** */
 #include "../inc/headers/fractol.h"
 
-//	Main function of the check input steep
-int	check_input(int argc, char **argv, char *set)
+//	Has its name suggests, this function display the error and return 0
+static int	error_msg(int mode)
 {
-	if (argc < 2 || argc > 4)
-		return (error_msg(1));
-	if (!ft_strncmp(argv[1], "Mandelbrot", 0xFFFFFF)
-		|| !ft_strncmp(argv[1], "mandelbrot", 0xFFFFFF))
+	if (mode == 1)
 	{
-		*set = 'm';
-		if (argc > 2)
-			return (error_msg(1));
+		ft_printf("Invalid number of arguments\n");
 	}
-	else if (!ft_strncmp(argv[1], "Julia", 0xFFFFFF)
-		|| !ft_strncmp(argv[1], "julia", 0xFFFFFF))
+	else if (mode == 2)
 	{
-		*set = 'j';
-		if (argc > 4 || argc < 4)
-			return (error_msg(1));
-		if (!check_input_num(argv[2], 0, 0) || !check_input_num(argv[3], 0, 0))
-			return (error_msg(2));
+		ft_printf("Invalid input values for the fractal,");
+		ft_printf("make sure you are entering values correctly:\n");
 	}
-	return (1);
+	ft_printf("\nEnter the desired fractal as follows:\n");
+	ft_printf("- For Mandelbrod set type: mandelbrod\n");
+	ft_printf("- For Julia set type: julia (x value) (i value)\n");
+	ft_printf("\nExample: Julia -0.6 -0.4\n");
+	return (0);
 }
 
 //	Function to see if he written correctly the input values for the Julia set
-int	check_input_num(char *num, int symb, int point)
+static int	check_input_num(char *num, int symb, int point)
 {
 	size_t	size;
 
@@ -65,21 +60,26 @@ int	check_input_num(char *num, int symb, int point)
 	return (1);
 }
 
-//	Has its name suggests, this function display the error and return 0
-int	error_msg(int mode)
+//	Main function of the check input steep
+int	check_input(int argc, char **argv, char *set)
 {
-	if (mode == 1)
+	if (argc < 2 || argc > 4)
+		return (error_msg(1));
+	if (!ft_strncmp(argv[1], "Mandelbrot", 0xFFFFFF)
+		|| !ft_strncmp(argv[1], "mandelbrot", 0xFFFFFF))
 	{
-		printf("Invalid number of arguments\n");
+		*set = 'm';
+		if (argc > 2)
+			return (error_msg(1));
 	}
-	else if (mode == 2)
+	else if (!ft_strncmp(argv[1], "Julia", 0xFFFFFF)
+		|| !ft_strncmp(argv[1], "julia", 0xFFFFFF))
 	{
-		printf("Invalid input values for the fractal,");
-		printf("make sure you are entering values correctly:\n");
+		*set = 'j';
+		if (argc > 4 || argc < 4)
+			return (error_msg(1));
+		if (!check_input_num(argv[2], 0, 0) || !check_input_num(argv[3], 0, 0))
+			return (error_msg(2));
 	}
-	printf("\nEnter the desired fractal as follows:\n");
-	printf("- For Mandelbrod set type: mandelbrod\n");
-	printf("- For Julia set type: julia (x value) (i value)\n");
-	printf("\nExample: Julia -0.6 -0.4\n");
-	return (0);
+	return (1);
 }
