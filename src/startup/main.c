@@ -9,8 +9,8 @@
 /*   Updated: 2022/08/16 01:16:57 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/headers/fractol.h"
-#include "../../inc/headers/mlx_and_struct.h"
+#include "fractol.h"
+#include "mlx_and_struct.h"
 
 static int	program_startup(char select, char **argv);
 

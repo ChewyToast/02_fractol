@@ -9,8 +9,8 @@
 /*   Updated: 2022/08/16 01:21:42 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/headers/fractol.h"
-#include "../../inc/headers/mlx_and_struct.h"
+#include "fractol.h"
+#include "mlx_and_struct.h"
 
 void	init_fract(t_fractol *fractol, char select, char **argv)
 {
