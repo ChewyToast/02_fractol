@@ -9,7 +9,10 @@
 /*   Updated: 2022/08/17 22:53:07 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/headers/mlx_and_struct.h"
+#include "mlx_and_struct.h"
+#include "fractol.h"
+
+static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter);
 
 void	draw_julia(t_fractol *fractol)
 {
@@ -68,7 +71,7 @@ void	draw_mandelbrot(t_fractol *fractol)
 	}
 }
 
-int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter)
+static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter)
 {
 	int		i;
 	double	old_x_iter;

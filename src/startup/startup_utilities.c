@@ -9,7 +9,8 @@
 /*   Updated: 2022/08/16 01:18:42 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../inc/headers/fractol.h"
+#include "fractol.h"
+#include "mlx_and_struct.h"
 
 //	Has its name suggests, this function display the error and return 0
 static int	error_msg(int mode)

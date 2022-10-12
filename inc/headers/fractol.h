@@ -15,6 +15,8 @@
 
 // 						~ LIBRARYS ~
 
+# include "mlx_and_struct.h"
+
 //	LIBFT LIBRARY
 # include "../bmlib/bmlib.h"
 
@@ -37,7 +39,5 @@ int		window_startup(t_fractol *fractol);
 //		drawers
 void	draw_julia(t_fractol *fractol);
 void	draw_mandelbrot(t_fractol *fractol);
-int		drawer_utility(t_fractol *fractol,
-			double new_x_iter, double new_y_iter);
 
 #endif

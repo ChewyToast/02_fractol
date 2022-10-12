@@ -18,6 +18,8 @@
 
 // 						~ STRUCTS ~
 
+typedef struct s_fractol	t_fractol;
+
 //	Function definition to be associated to a fractal
 typedef void	(*t_fdrawer)(t_fractol *fractol);
 
@@ -29,7 +31,7 @@ typedef struct s_mlx
 }				t_mlx;
 
 //	Main struct
-typedef struct s_fractol
+struct s_fractol
 {
 	t_mlx		screen;
 	t_fdrawer	t_fdrawer;
@@ -38,7 +40,7 @@ typedef struct s_fractol
 	double		ycenter;
 	double		cx;
 	double		cy;
-}				t_fractol;
+};
 
 // 						~ MACROS ~
 
