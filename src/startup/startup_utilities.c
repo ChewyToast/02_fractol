@@ -13,7 +13,7 @@
 #include "mlx_and_struct.h"
 
 //	Has its name suggests, this function display the error and return 0
-static int	error_msg(int mode)
+size_t	error_msg(int mode)
 {
 	if (mode == 1)
 	{
@@ -24,6 +24,8 @@ static int	error_msg(int mode)
 		ft_printf("Invalid input values for the fractal,");
 		ft_printf("make sure you are entering values correctly:\n");
 	}
+	else if (mode == 5)
+		ft_printf("\nError\n");
 	ft_printf("\nEnter the desired fractal as follows:\n");
 	ft_printf("- For Mandelbrod set type: mandelbrod\n");
 	ft_printf("- For Julia set type: julia (x value) (i value)\n");
@@ -32,7 +34,7 @@ static int	error_msg(int mode)
 }
 
 //	Function to see if he written correctly the input values for the Julia set
-static int	check_input_num(char *num, int symb, int point)
+static size_t	check_input_num(char *num, int symb, int point)
 {
 	size_t	size;
 
@@ -62,7 +64,7 @@ static int	check_input_num(char *num, int symb, int point)
 }
 
 //	Main function of the check input steep
-int	check_input(int argc, char **argv, char *set)
+size_t	check_input(int argc, char **argv, char *set)
 {
 	if (argc < 2 || argc > 4)
 		return (error_msg(1));

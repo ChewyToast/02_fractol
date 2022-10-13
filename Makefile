@@ -18,10 +18,13 @@ NAME =			fractol
 #	----------------------------------------	FILES
 
 # All the source of drawers
-SRC_DRW =		src/drawers/fdrawers.c
+SRC_DRW =		src/drawers/fdrawers.c			\
+				src/drawers/mdrawer.c
 
 # All the source of mlx_window
-SRC_MLXW = 		src/mlx_window/window.c
+SRC_MLXW = 		src/mlx_window/window.c			\
+				src/mlx_window/mlx_inputs.c		\
+				src/mlx_window/hook_events.c
 
 # All the source of startup
 SRC_STRT = 		src/startup/startup_utilities.c	\
@@ -31,6 +34,7 @@ SRC_STRT = 		src/startup/startup_utilities.c	\
 # All the source of utils
 SRC_UTIL = 		src/utils/double_atoi.c			\
 				src/utils/get_colors.c
+#				src/utils/double_itoa.c
 
 #	----------------------------------------	SRC DIR
 
@@ -144,6 +148,11 @@ clean:
 fclean:
 					@$(MAKE) clean
 					@rm -f $(NAME)
+
+fcleanall:
+					@$(MAKE) fclean
+					@$(MAKE) fclean -C $(MAKE_BM)
+					@$(MAKE) clean -C $(MAKE_MLX)
 
 re:
 					@$(MAKE) fclean

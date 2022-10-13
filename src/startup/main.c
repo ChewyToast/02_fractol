@@ -12,7 +12,7 @@
 #include "fractol.h"
 #include "mlx_and_struct.h"
 
-static int	program_startup(char select, char **argv);
+static size_t	program_startup(char select, char **argv);
 
 //	Main function, thr we call the checker and if its correct start the program
 int	main(int argc, char **argv)
@@ -26,21 +26,26 @@ int	main(int argc, char **argv)
 	if (set == 'j')
 		printf("Julia set selected\n");
 	if (!program_startup(set, argv))
-		return (0);
+		error_msg(5);
+	exit (0);
 }
 
 //	Program controller function
-static int	program_startup(char select, char **argv)
+static size_t	program_startup(char select, char **argv)
 {
 	t_fractol	fractol;
 
-	init_fract(&fractol, select, argv);
+	if (!init_fract(&fractol, select, argv))
+		return (0);
 	if (!window_startup(&fractol))
 	{
 		mlx_destroy_window(fractol.screen.ptr, fractol.screen.win);
 		return (0);
 	}
+	fractol.t_mdrawer(&fractol);
 	fractol.t_fdrawer(&fractol);
+	mlx_hook(fractol.screen.win, 2, 0, mlx_keypress, &fractol);
+	mlx_hook(fractol.screen.win, 4, 0, mlx_mousepress, &fractol);
 	mlx_loop(fractol.screen.ptr);
 	return (1);
 }

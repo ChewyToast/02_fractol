@@ -31,7 +31,7 @@ void	draw_julia(t_fractol *fractol)
 						/ (0.5 * fractol->zoom * W) + fractol->xcenter),
 					((y - H / 2)
 						/ (0.5 * fractol->zoom * H) + fractol->ycenter));
-			if (i < ITER_MAX)
+			if (i < fractol->iter_max)
 				color = get_color(i);
 			else
 				color = 0x1D1C1A;
@@ -60,7 +60,7 @@ void	draw_mandelbrot(t_fractol *fractol)
 			fractol->cy = ((y - H / 2)
 					/ (0.5 * fractol->zoom * H) + fractol->ycenter);
 			i = drawer_utility(fractol, 0, 0);
-			if (i < ITER_MAX)
+			if (i < fractol->iter_max)
 				color = get_color(i);
 			else
 				color = 0x1D1C1A;
@@ -78,7 +78,7 @@ static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_it
 	double	old_y_iter;
 
 	i = 0;
-	while (i < ITER_MAX)
+	while (i < fractol->iter_max)
 	{
 		old_x_iter = new_x_iter;
 		old_y_iter = new_y_iter;
