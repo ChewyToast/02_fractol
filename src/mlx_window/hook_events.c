@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "mlx_and_struct.h"
 #include "fractol.h"
+#include "utils.h"
 
 static void	cli_ask(int key, t_fractol *fractol);
 static void	move_center(int key, t_fractol *fractol);
@@ -23,6 +24,7 @@ void	key_compare(int key, t_fractol *fractol)
 		move_center(key, fractol);
 	if (key == 15)
 		cli_ask(key, fractol);
+	ft_printf("\n<%d>\n", key);
 }
 
 static void	cli_ask(int key, t_fractol *fractol)
@@ -32,7 +34,17 @@ static void	cli_ask(int key, t_fractol *fractol)
 		ft_printf("\nEnter the desired resolution to see the fractal (default: 150): ");
 		fractol->iter_max = ft_atoi(get_next_line(0));
 		ft_printf("\nResolution set to: %d", fractol->iter_max);
-	}
+	}/*
+	if (key == 8)
+	{
+		fractol->color_index++;
+		if (fractol->color_index == 2)
+			fractol->color_index = 0;
+		else if (fractol->color_index == 1)
+			fractol->get_color = get_color_green;
+		else if (fractol->color_index == 0)
+			fractol->get_color = get_color_blue;
+	}*/
 }
 
 static void	move_center(int key, t_fractol *fractol)
@@ -42,17 +54,17 @@ static void	move_center(int key, t_fractol *fractol)
 
 	i = 0;
 	modi = 0.05;
-	while ((fractol->zoom - i) > 100)
+	while ((fractol->setvalue.zoom - i) > 100)
 	{
 		i += 100;
 		modi /= 0.55;
 	}
 	if (key == 126)
-		fractol->ycenter -= modi;
+		fractol->setvalue.ycenter -= modi;
 	if (key == 125)
-		fractol->ycenter += modi;
+		fractol->setvalue.ycenter += modi;
 	if (key == 124)
-		fractol->xcenter += modi;
+		fractol->setvalue.xcenter += modi;
 	if (key == 123)
-		fractol->xcenter -= modi;
+		fractol->setvalue.xcenter -= modi;
 }

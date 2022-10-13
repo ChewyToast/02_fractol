@@ -24,12 +24,15 @@ int	mlx_mousepress(int btn, int x, int y, t_fractol *fractol)
 	(void)x;
 	(void)y;
 	ft_printf("\nbtnpressed: <%d>", btn);
-	if (btn == 4)
-		fractol->zoom *= 2;
-	else if (btn == 5 && fractol->zoom > 1)
-		fractol->zoom /= 2;
+	if (btn == 5)
+		fractol->setvalue.zoom *= 2;
+	else if (btn == 4)
+	{
+		if (fractol->setvalue.zoom > 1)
+			fractol->setvalue.zoom /= 2;
+	}
 	fractol->t_fdrawer(fractol);
-	printf("zoom value: %lld", fractol->zoom);
+	printf("zoom value: %lld", fractol->setvalue.zoom);
 	ft_printf("\nMOUSE PRINT DONE");
 	return (1);
 }

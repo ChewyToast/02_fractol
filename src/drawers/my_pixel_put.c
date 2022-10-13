@@ -11,25 +11,27 @@
 /* ************************************************************************** */
 #include "mlx_and_struct.h"
 #include "fractol.h"
+#include "my_rgba.h"
 
-//	Function to print the menu
-size_t	mdrawer(t_fractol *fractol)
+size_t	my_pixel_put(t_fractol *fractol, int x, int y, int color)
 {
-	size_t	x;
-	size_t	y;
+	size_t	i;
 
-	y = 0;
-	while (y <= H)
+	i = 0;
+	my_get_color(color, fractol);
+	if (x >= 0 && y >= 0)
 	{
-		x = W;
-		while (x < WM)
-		{
-			if (!mlx_pixel_put(fractol->screen.ptr, fractol->screen.win, x++, y, 0x494949))
-				return (0);
-		}
-		y++;
+		fractol->img.buff[(WM * 4 * y) + (WM * 2 + x * 4)] = fractol->get_color.r;
+		fractol->img.buff[(WM * 4 * y) + (WM * 2 + x * 4) + 1] = fractol->get_color.g;
+		fractol->img.buff[(WM * 4 * y) + (WM * 2 + x * 4) + 2] = fractol->get_color.b;
+		fractol->img.buff[(WM * 4 * y) + (WM * 2 + x * 4) + 3] = fractol->get_color.a;
 	}
-	mlx_string_put(fractol->screen.ptr, fractol->screen.win, W + 20, 60, 0x494949, "RESOLUCION:");
-	mlx_string_put(fractol->screen.ptr, fractol->screen.win, W + 120, 60, fractol->get_color(83), ft_itoa(fractol->iter_max));
-	return (1);
+}
+
+static void	my_get_color(int color, t_fractol *fractol)
+{
+	t_fractol->get_color.r = (color >> 16) & 0xff;
+	t_fractol->get_color.g = (color >> 8) & 0xff;
+	t_fractol->get_color.b = color & 0xff;
+	t_fractol->get_color.a = 1;
 }

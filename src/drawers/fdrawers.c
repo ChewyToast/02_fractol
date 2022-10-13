@@ -14,7 +14,7 @@
 
 static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter);
 
-void	draw_julia(t_fractol *fractol)
+size_t	draw_julia(t_fractol *fractol)
 {
 	double	color;
 	int		x;
@@ -28,21 +28,23 @@ void	draw_julia(t_fractol *fractol)
 		while (x < W)
 		{
 			i = drawer_utility(fractol, (1.5 * (x - W / 2)
-						/ (0.5 * fractol->zoom * W) + fractol->xcenter),
+						/ (0.5 * fractol->setvalue.zoom * W) + fractol->setvalue.xcenter),
 					((y - H / 2)
-						/ (0.5 * fractol->zoom * H) + fractol->ycenter));
+						/ (0.5 * fractol->setvalue.zoom * H) + fractol->setvalue.ycenter));
 			if (i < fractol->iter_max)
-				color = get_color(i);
+				color = fractol->get_color(i);
 			else
 				color = 0x1D1C1A;
-			mlx_pixel_put(fractol->screen.ptr,
-				fractol->screen.win, x++, y, color);
+			if (!mlx_pixel_put(fractol->screen.ptr,
+				fractol->screen.win, x++, y, color))
+				return (0);
 		}
 		y++;
 	}
+	return (1);
 }
 
-void	draw_mandelbrot(t_fractol *fractol)
+size_t	draw_mandelbrot(t_fractol *fractol)
 {
 	double	color;
 	int		x;
@@ -55,20 +57,22 @@ void	draw_mandelbrot(t_fractol *fractol)
 		x = 0;
 		while (x < W)
 		{
-			fractol->cx = (1.5 * (x - W / 2)
-					/ (0.5 * fractol->zoom * W) + fractol->xcenter);
-			fractol->cy = ((y - H / 2)
-					/ (0.5 * fractol->zoom * H) + fractol->ycenter);
+			fractol->setvalue.cx = (1.5 * (x - W / 2)
+					/ (0.5 * fractol->setvalue.zoom * W) + fractol->setvalue.xcenter);
+			fractol->setvalue.cy = ((y - H / 2)
+					/ (0.5 * fractol->setvalue.zoom * H) + fractol->setvalue.ycenter);
 			i = drawer_utility(fractol, 0, 0);
 			if (i < fractol->iter_max)
-				color = get_color(i);
+				color = fractol->get_color(i);
 			else
 				color = 0x1D1C1A;
-			mlx_pixel_put(fractol->screen.ptr,
-				fractol->screen.win, x++, y, color);
+			if (!mlx_pixel_put(fractol->screen.ptr,
+				fractol->screen.win, x++, y, color))
+				return (0);
 		}
 		y++;
 	}
+	return (1);
 }
 
 static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter)
@@ -83,8 +87,8 @@ static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_it
 		old_x_iter = new_x_iter;
 		old_y_iter = new_y_iter;
 		new_x_iter = (((old_x_iter * old_x_iter)
-					- (old_y_iter * old_y_iter)) + fractol->cx);
-		new_y_iter = 2 * old_x_iter * old_y_iter + fractol->cy;
+					- (old_y_iter * old_y_iter)) + fractol->setvalue.cx);
+		new_y_iter = 2 * old_x_iter * old_y_iter + fractol->setvalue.cy;
 		if ((new_x_iter * new_x_iter + new_y_iter * new_y_iter) > 4)
 			break ;
 		i++;

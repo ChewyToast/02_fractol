@@ -28,12 +28,8 @@
 //		startup
 size_t	check_input(int argc, char **argv, char *set);
 size_t	init_fract(t_fractol *fractol, char select, char **argv);
+void	startup_pxl_buff(t_fractol *fractol, char *pxl_buff);
 size_t	error_msg(int mode);
-
-//		utils
-double	double_atoi(const char *nptr, double num, double i);
-//char	*double_itoa(double num);
-int		get_color(int i);
 
 //		mlx_window
 int		window_startup(t_fractol *fractol);
@@ -43,8 +39,12 @@ int		mlx_keypress(int key, t_fractol *fractol);
 int		mlx_mousepress(int btn, int x, int y, t_fractol *fractol);
 
 //		drawers
-void	draw_julia(t_fractol *fractol);
-void	draw_mandelbrot(t_fractol *fractol);
+size_t	draw_julia(t_fractol *fractol);
+size_t	draw_mandelbrot(t_fractol *fractol);
 size_t	mdrawer(t_fractol *fractol);
+
+double	double_atoi(const char *nptr, double num, double i);
+int		get_color_blue(int i);
+int		get_color_green(int i);
 
 #endif

@@ -25,12 +25,14 @@ typedef struct s_fractol	t_fractol;
 //	Function definition to be associated to a fractal
 typedef void	(*t_fdrawer)(t_fractol *fractol);
 typedef void	(*t_mdrawer)(t_fractol *fractol);
+typedef int		(*t_get_color)(int i);
 
 //	Containing structure of screen pointers
 typedef struct s_mlx
 {
 	void	*ptr;
 	void	*win;
+	void	*img;
 }				t_mlx;
 
 //	Containing structure of strings for screen info
@@ -42,19 +44,43 @@ typedef struct s_str
 	char	*zoom;
 }				t_str;
 
-//	Main struct
-struct s_fractol
+typedef struct s_setvalue
 {
-	t_mlx		screen;
-	t_str		str;
-	t_fdrawer	t_fdrawer;
-	t_mdrawer	t_mdrawer;
 	long long	zoom;
 	double		xcenter;
 	double		ycenter;
 	double		cx;
 	double		cy;
+}				t_setvalue;
+
+typedef struct s_myrgba
+{
+	int	r;
+	int	g;
+	int	b;
+	int	a;
+}				t_myrgba;
+
+typedef struct s_img
+{
+	char	*buff;
+	int		bitxpix;
+	int		s_line;
+	int		endian;
+}				t_img;
+
+//	Main struct
+struct s_fractol
+{
 	char		set;
+	t_mlx		screen;
+	t_str		str;
+	t_setvalue	setvalue;
+	t_fdrawer	t_fdrawer;
+	t_mdrawer	t_mdrawer;
+	t_get_color	get_color;
+	t_img		img;
+	char		color_index;
 	int			iter_max;
 };
 

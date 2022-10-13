@@ -162,19 +162,19 @@ $(NAME) :			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 					@$(GCC) $(FLAGS) $^ $(BMLIB) $(MINILIBXCC) $(OPENGL) -o $@
 
 
-$(DRW_DIR)%.o :		$(DRW_DIR)%.c
+$(DRW_DIR)%.o :		$(DRW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@echo "$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-$(MLXW_DIR)%.o :	$(MLXW_DIR)%.c
+$(MLXW_DIR)%.o :	$(MLXW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@echo "$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-$(STRT_DIR)%.o :	$(STRT_DIR)%.c
+$(STRT_DIR)%.o :	$(STRT_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@echo "$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-$(UTIL_DIR)%.o :	$(UTIL_DIR)%.c
+$(UTIL_DIR)%.o :	$(UTIL_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@echo "$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
