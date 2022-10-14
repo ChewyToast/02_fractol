@@ -15,7 +15,7 @@
 int	mlx_keypress(int key, t_fractol *fractol)
 {
 	key_compare(key, fractol);
-	fractol->t_fdrawer(fractol);
+	drawer(fractol);
 	return (1);
 }
 
@@ -23,7 +23,6 @@ int	mlx_mousepress(int btn, int x, int y, t_fractol *fractol)
 {
 	(void)x;
 	(void)y;
-	ft_printf("\nbtnpressed: <%d>", btn);
 	if (btn == 5)
 		fractol->setvalue.zoom *= 2;
 	else if (btn == 4)
@@ -31,8 +30,6 @@ int	mlx_mousepress(int btn, int x, int y, t_fractol *fractol)
 		if (fractol->setvalue.zoom > 1)
 			fractol->setvalue.zoom /= 2;
 	}
-	fractol->t_fdrawer(fractol);
-	printf("zoom value: %lld", fractol->setvalue.zoom);
-	ft_printf("\nMOUSE PRINT DONE");
+	drawer(fractol);
 	return (1);
 }

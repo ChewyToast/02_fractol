@@ -33,17 +33,9 @@ static void	cli_ask(int key, t_fractol *fractol)
 		ft_printf("\nEnter the desired resolution to see the fractal (default: 150): ");
 		fractol->iter_max = ft_atoi(get_next_line(0));
 		ft_printf("\nResolution set to: %d", fractol->iter_max);
-	}/*
+	}
 	if (key == 8)
-	{
-		fractol->color_index++;
-		if (fractol->color_index == 2)
-			fractol->color_index = 0;
-		else if (fractol->color_index == 1)
-			fractol->get_color = get_color_green;
-		else if (fractol->color_index == 0)
-			fractol->get_color = get_color_blue;
-	}*/
+		fractol->get_color = get_color_green;
 }
 
 static void	move_center(int key, t_fractol *fractol)

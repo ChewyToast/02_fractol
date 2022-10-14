@@ -14,10 +14,7 @@
 
 void	drawer(t_fractol *fractol)
 {
-	write(1, "HJ\n", 3);
 	fractol->t_fdrawer(fractol);
-	write(1, "HJ\n", 3);
 	fractol->t_mdrawer(fractol);
-	write(1, "HJ\n", 3);
 	mlx_put_image_to_window(fractol->screen.ptr, fractol->screen.win, fractol->screen.img, 0, 0);
 }

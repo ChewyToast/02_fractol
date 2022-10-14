@@ -63,9 +63,7 @@ void	draw_mandelbrot(t_fractol *fractol)
 				color = fractol->get_color(i);
 			else
 				color = 0x1D1C1A;
-			write(1, "HF1\n", 4);
 			my_pixel_put(fractol, x++, y, color);
-			write(1, "HF2\n", 4);
 		}
 		y++;
 	}

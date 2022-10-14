@@ -42,13 +42,9 @@ static size_t	program_startup(char select, char **argv)
 		mlx_destroy_window(fractol.screen.ptr, fractol.screen.win);
 		return (0);
 	}
-	write(1, "HI\n", 3);
 	drawer(&fractol);
-	write(1, "HI\n", 3);
 	mlx_hook(fractol.screen.win, 2, 0, mlx_keypress, &fractol);
-	write(1, "HI\n", 3);
 	mlx_hook(fractol.screen.win, 4, 0, mlx_mousepress, &fractol);
-	write(1, "HI\n", 3);
 	mlx_loop(fractol.screen.ptr);
 	return (1);
 }

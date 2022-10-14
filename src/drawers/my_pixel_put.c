@@ -16,18 +16,13 @@ static void	my_get_color(int color, t_fractol *fractol);
 
 size_t	my_pixel_put(t_fractol *fractol, int x, int y, int color)
 {
-	write(1, "PX\n", 3);
 	my_get_color(color, fractol);
 	if ((y < 0 || y >= H) || (x < 0 || x >= W))
 		return (0);
-	write(1, "P1\n", 3);
 	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4)] = fractol->rgba.r;
-	write(1, "P2\n", 3);
-	fractol->img.buff[(WM * 4 * y) + (WM * 2 + x * 4) + 1] = fractol->rgba.g;
-	write(1, "P3\n", 3);
-	fractol->img.buff[(WM * 4 * y) + (WM * 2 + x * 4) + 2] = fractol->rgba.b;
-	write(1, "P4\n", 3);
-	fractol->img.buff[(WM * 4 * y) + (WM * 2 + x * 4) + 3] = fractol->rgba.a;
+	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4) + 1] = fractol->rgba.g;
+	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4) + 2] = fractol->rgba.b;
+	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4) + 3] = fractol->rgba.a;
 	return (0);
 }
 
