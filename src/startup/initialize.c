@@ -11,18 +11,31 @@
 /* ************************************************************************** */
 #include "fractol.h"
 #include "mlx_and_struct.h"
-#include "utils.h"
 
+static size_t	init_mandelbrot(t_fractol *fractol);
 static size_t	init_julia(t_fractol *fractol, char **argv);
-static size_t	init_mandelbrot(t_fractol *fractol, char **argv);
-static size_t	startup_pxl_buff(t_fractol *fractol, char *pxl_buff);
 
 size_t	init_fract(t_fractol *fractol, char select, char **argv)
 {
 	if (select == 'm')
-		return (init_julia(fractol, argv));
+		return (init_mandelbrot(fractol));
 	else if (select == 'j')
-		return (init_fract(fractol, argv));
+		return (init_julia(fractol, argv));
+	return (1);
+}
+
+static size_t	init_mandelbrot(t_fractol *fractol)
+{
+	fractol->set = 'm';
+	fractol->iter_max = 150;
+	fractol->setvalue.cx = 0;
+	fractol->setvalue.cy = 0;
+	fractol->setvalue.zoom = 1;
+	fractol->t_mdrawer = mdrawer;
+	fractol->setvalue.ycenter = 0;
+	fractol->setvalue.xcenter = -0.45;
+	fractol->get_color = get_color_blue;
+	fractol->t_fdrawer = draw_mandelbrot;
 	return (1);
 }
 
@@ -41,29 +54,16 @@ static size_t	init_julia(t_fractol *fractol, char **argv)
 	return (1);
 }
 
-static size_t	init_mandelbrot(t_fractol *fractol, char **argv)
-{
-	fractol->set = 'm';
-	fractol->iter_max = 150;
-	fractol->setvalue.cx = 0;
-	fractol->setvalue.cy = 0;
-	fractol->setvalue.zoom = 1;
-	fractol->t_mdrawer = mdrawer;
-	fractol->setvalue.ycenter = 0;
-	fractol->setvalue.xcenter = -0.45;
-	fractol->get_color = get_color_blue;
-	fractol->t_fdrawer = &draw_mandelbrot;
-	return (1);
-}
-
+/*
 void	startup_pxl_buff(t_fractol *fractol, char *pxl_buff)
 {
-	if (!fractol->pxl_buff)
-		return (0);
-	pxl_buff[WM * H * 4] = '\0';
-	while (pxl_buff)
+	size_t	i;
+
+	i = WM * H * 4 + 1;
+
+	while (i--)
 		*pxl_buff++ = 0;
-}
+}*/
 
 /*
 static ssize_t	allocator(t_fractol *fractol, char *set)

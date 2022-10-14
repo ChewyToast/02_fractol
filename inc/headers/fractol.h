@@ -39,9 +39,11 @@ int		mlx_keypress(int key, t_fractol *fractol);
 int		mlx_mousepress(int btn, int x, int y, t_fractol *fractol);
 
 //		drawers
-size_t	draw_julia(t_fractol *fractol);
-size_t	draw_mandelbrot(t_fractol *fractol);
-size_t	mdrawer(t_fractol *fractol);
+void	draw_julia(t_fractol *fractol);
+void	draw_mandelbrot(t_fractol *fractol);
+void	mdrawer(t_fractol *fractol);
+size_t	my_pixel_put(t_fractol *fractol, int x, int y, int color);
+void	drawer(t_fractol *fractol);
 
 double	double_atoi(const char *nptr, double num, double i);
 int		get_color_blue(int i);

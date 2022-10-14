@@ -21,7 +21,7 @@ int	window_startup(t_fractol *fractol)
 	if (!fractol->screen.win)
 		return (0);
 	fractol->screen.img = mlx_new_image(fractol->screen.ptr, WM, H);
-	fractol->img.buff = mlx_get_data_addr(fractol->screen.img, &fractol->img.bitxix, &fractol->img.s_line, &fractol->img.endian);
+	fractol->img.buff = mlx_get_data_addr(fractol->screen.img, &fractol->img.bitxpix, &fractol->img.s_line, &fractol->img.endian);
 	return (1);
 }
 

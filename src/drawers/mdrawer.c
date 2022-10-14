@@ -13,7 +13,7 @@
 #include "fractol.h"
 
 //	Function to print the menu
-size_t	mdrawer(t_fractol *fractol)
+void	mdrawer(t_fractol *fractol)
 {
 	size_t	x;
 	size_t	y;
@@ -23,13 +23,9 @@ size_t	mdrawer(t_fractol *fractol)
 	{
 		x = W;
 		while (x < WM)
-		{
-			if (!mlx_pixel_put(fractol->screen.ptr, fractol->screen.win, x++, y, 0x494949))
-				return (0);
-		}
+			my_pixel_put(fractol, x++, y, 0x494949);
 		y++;
 	}
 	mlx_string_put(fractol->screen.ptr, fractol->screen.win, W + 20, 60, 0x494949, "RESOLUCION:");
 	mlx_string_put(fractol->screen.ptr, fractol->screen.win, W + 120, 60, fractol->get_color(83), ft_itoa(fractol->iter_max));
-	return (1);
 }

@@ -14,7 +14,7 @@
 
 static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter);
 
-size_t	draw_julia(t_fractol *fractol)
+void	draw_julia(t_fractol *fractol)
 {
 	double	color;
 	int		x;
@@ -35,16 +35,13 @@ size_t	draw_julia(t_fractol *fractol)
 				color = fractol->get_color(i);
 			else
 				color = 0x1D1C1A;
-			if (!mlx_pixel_put(fractol->screen.ptr,
-				fractol->screen.win, x++, y, color))
-				return (0);
+			my_pixel_put(fractol, x++, y, color);
 		}
 		y++;
 	}
-	return (1);
 }
 
-size_t	draw_mandelbrot(t_fractol *fractol)
+void	draw_mandelbrot(t_fractol *fractol)
 {
 	double	color;
 	int		x;
@@ -66,13 +63,12 @@ size_t	draw_mandelbrot(t_fractol *fractol)
 				color = fractol->get_color(i);
 			else
 				color = 0x1D1C1A;
-			if (!mlx_pixel_put(fractol->screen.ptr,
-				fractol->screen.win, x++, y, color))
-				return (0);
+			write(1, "HF1\n", 4);
+			my_pixel_put(fractol, x++, y, color);
+			write(1, "HF2\n", 4);
 		}
 		y++;
 	}
-	return (1);
 }
 
 static int	drawer_utility(t_fractol *fractol, double new_x_iter, double new_y_iter)

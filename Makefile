@@ -19,7 +19,9 @@ NAME =			fractol
 
 # All the source of drawers
 SRC_DRW =		src/drawers/fdrawers.c			\
-				src/drawers/mdrawer.c
+				src/drawers/mdrawer.c			\
+				src/drawers/drawer.c			\
+				src/drawers/my_pixel_put.c
 
 # All the source of mlx_window
 SRC_MLXW = 		src/mlx_window/window.c			\

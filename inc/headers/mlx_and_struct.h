@@ -79,6 +79,7 @@ struct s_fractol
 	t_fdrawer	t_fdrawer;
 	t_mdrawer	t_mdrawer;
 	t_get_color	get_color;
+	t_myrgba	rgba;
 	t_img		img;
 	char		color_index;
 	int			iter_max;

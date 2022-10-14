@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 #include "mlx_and_struct.h"
 #include "fractol.h"
-#include "utils.h"
 
 static void	cli_ask(int key, t_fractol *fractol);
 static void	move_center(int key, t_fractol *fractol);
