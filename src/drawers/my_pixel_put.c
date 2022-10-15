@@ -12,24 +12,21 @@
 #include "mlx_and_struct.h"
 #include "fractol.h"
 
-static void	my_get_color(int color, t_fractol *fractol);
-
-size_t	my_pixel_put(t_fractol *fractol, int x, int y, int color)
+void	my_pixel_put(t_fractol *fractol, int x, int y, int color)
 {
-	my_get_color(color, fractol);
-	if ((y < 0 || y >= H) || (x < 0 || x >= W))
-		return (0);
-	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4)] = fractol->rgba.r;
-	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4) + 1] = fractol->rgba.g;
-	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4) + 2] = fractol->rgba.b;
-	fractol->img.buff[(WM * 4 * (y - 1)) + (x * 4) + 3] = fractol->rgba.a;
-	return (0);
+	fractol->img.buff[(W * 4 * (y - 1)) + (x * 4)] = color & 0xff;
+	fractol->img.buff[(W * 4 * (y - 1)) + (x * 4) + 1] = (color >> 8) & 0xff;
+	fractol->img.buff[(W * 4 * (y - 1)) + (x * 4) + 2] = (color >> 16) & 0xff;
+	if (x > 1094)
+		fractol->img.buff[(W * 4 * (y - 1)) + (x * 4) + 3] = 90;
+	else
+		fractol->img.buff[(W * 4 * (y - 1)) + (x * 4) + 3] = 10;
 }
-
-static void	my_get_color(int color, t_fractol *fractol)
+void	set_background(t_fractol *fractol)
 {
-	fractol->rgba.r = (color >> 16) & 0xff;
-	fractol->rgba.g = (color >> 8) & 0xff;
-	fractol->rgba.b = color & 0xff;
-	fractol->rgba.a = 1;
+	size_t	i;
+
+	i = W * H * 4 + 1;
+	while (i--)
+		fractol->img.buff[i] = 0;
 }

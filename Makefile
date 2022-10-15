@@ -26,7 +26,8 @@ SRC_DRW =		src/drawers/fdrawers.c			\
 # All the source of mlx_window
 SRC_MLXW = 		src/mlx_window/window.c			\
 				src/mlx_window/mlx_inputs.c		\
-				src/mlx_window/hook_events.c
+				src/mlx_window/mouse_events.c	\
+				src/mlx_window/key_events.c
 
 # All the source of startup
 SRC_STRT = 		src/startup/startup_utilities.c	\

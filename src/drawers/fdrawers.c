@@ -32,7 +32,7 @@ void	draw_julia(t_fractol *fractol)
 					((y - H / 2)
 						/ (0.5 * fractol->setvalue.zoom * H) + fractol->setvalue.ycenter));
 			if (i < fractol->iter_max)
-				color = fractol->get_color(i);
+				color = fractol->get_color(i, fractol);
 			else
 				color = 0x1D1C1A;
 			my_pixel_put(fractol, x++, y, color);
@@ -60,7 +60,7 @@ void	draw_mandelbrot(t_fractol *fractol)
 					/ (0.5 * fractol->setvalue.zoom * H) + fractol->setvalue.ycenter);
 			i = drawer_utility(fractol, 0, 0);
 			if (i < fractol->iter_max)
-				color = fractol->get_color(i);
+				color = fractol->get_color(i, fractol);
 			else
 				color = 0x1D1C1A;
 			my_pixel_put(fractol, x++, y, color);

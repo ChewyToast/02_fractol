@@ -23,13 +23,7 @@ int	mlx_mousepress(int btn, int x, int y, t_fractol *fractol)
 {
 	(void)x;
 	(void)y;
-	if (btn == 5)
-		fractol->setvalue.zoom *= 2;
-	else if (btn == 4)
-	{
-		if (fractol->setvalue.zoom > 1)
-			fractol->setvalue.zoom /= 2;
-	}
+	mouse_compare(btn, fractol);
 	drawer(fractol);
 	return (1);
 }

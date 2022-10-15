@@ -35,6 +35,7 @@ size_t	error_msg(int mode);
 int		window_startup(t_fractol *fractol);
 void	end_fractol(void);
 void	key_compare(int key, t_fractol *fractol);
+void	mouse_compare(int btn, t_fractol *fractol);
 int		mlx_keypress(int key, t_fractol *fractol);
 int		mlx_mousepress(int btn, int x, int y, t_fractol *fractol);
 
@@ -42,11 +43,11 @@ int		mlx_mousepress(int btn, int x, int y, t_fractol *fractol);
 void	draw_julia(t_fractol *fractol);
 void	draw_mandelbrot(t_fractol *fractol);
 void	mdrawer(t_fractol *fractol);
-size_t	my_pixel_put(t_fractol *fractol, int x, int y, int color);
+void	my_pixel_put(t_fractol *fractol, int x, int y, int color);
+void	set_background(t_fractol *fractol);
 void	drawer(t_fractol *fractol);
 
 double	double_atoi(const char *nptr, double num, double i);
-int		get_color_blue(int i);
-int		get_color_green(int i);
+int		get_color_blue(int i, t_fractol *fractol);
 
 #endif

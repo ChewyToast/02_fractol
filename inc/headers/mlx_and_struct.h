@@ -19,13 +19,15 @@
 //	LIBRARY FOR MALLOC AND FREE
 # include <stdlib.h>
 
+# include <math.h>
+
 //	Struct declaration
 typedef struct s_fractol	t_fractol;
 
 //	Function definition to be associated to a fractal
 typedef void	(*t_fdrawer)(t_fractol *fractol);
 typedef void	(*t_mdrawer)(t_fractol *fractol);
-typedef int		(*t_get_color)(int i);
+typedef int		(*t_get_color)(int i, t_fractol *fractol);
 
 //	Containing structure of screen pointers
 typedef struct s_mlx
@@ -46,7 +48,7 @@ typedef struct s_str
 
 typedef struct s_setvalue
 {
-	long long	zoom;
+	double		zoom;
 	double		xcenter;
 	double		ycenter;
 	double		cx;
@@ -58,7 +60,6 @@ typedef struct s_myrgba
 	int	r;
 	int	g;
 	int	b;
-	int	a;
 }				t_myrgba;
 
 typedef struct s_img
@@ -82,12 +83,13 @@ struct s_fractol
 	t_myrgba	rgba;
 	t_img		img;
 	char		color_index;
+	double		center_modi;
+	int			plus_iter;
 	int			iter_max;
 };
 
 //	Defines
-# define W 1200
+# define W 1294
 # define H 800
-# define WM 1500
 
 #endif

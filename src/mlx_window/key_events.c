@@ -19,11 +19,10 @@ void	key_compare(int key, t_fractol *fractol)
 {
 	if (key == 53)
 		end_fractol();
-	if (key == 126 || (key == 125) || (key == 124) || (key == 123))
+	else if (key == 126 || (key == 125) || (key == 124) || (key == 123))
 		move_center(key, fractol);
-	if (key == 15)
+	else
 		cli_ask(key, fractol);
-	ft_printf("\n<%d>\n", key);
 }
 
 static void	cli_ask(int key, t_fractol *fractol)
@@ -34,28 +33,27 @@ static void	cli_ask(int key, t_fractol *fractol)
 		fractol->iter_max = ft_atoi(get_next_line(0));
 		ft_printf("\nResolution set to: %d", fractol->iter_max);
 	}
-	if (key == 8)
-		fractol->get_color = get_color_green;
+	else if (key == 12)
+	{
+		fractol->plus_iter += 20;
+		fractol->iter_max = fractol->plus_iter * pow(log10(fractol->setvalue.zoom + 10), 1.25);
+	}
+	else if (key == 13 && fractol->plus_iter > 20)
+	{
+		fractol->plus_iter -= 20;
+		fractol->iter_max = fractol->plus_iter * pow(log10(fractol->setvalue.zoom + 10), 1.25);
+	}
+	ft_printf("keypress: %d", key);
 }
 
 static void	move_center(int key, t_fractol *fractol)
 {
-	double	modi;
-	int	i;
-
-	i = 0;
-	modi = 0.05;
-	while ((fractol->setvalue.zoom - i) > 100)
-	{
-		i += 100;
-		modi /= 0.55;
-	}
 	if (key == 126)
-		fractol->setvalue.ycenter -= modi;
+		fractol->setvalue.ycenter -= fractol->center_modi;
 	if (key == 125)
-		fractol->setvalue.ycenter += modi;
+		fractol->setvalue.ycenter += fractol->center_modi;
 	if (key == 124)
-		fractol->setvalue.xcenter += modi;
+		fractol->setvalue.xcenter += fractol->center_modi;
 	if (key == 123)
-		fractol->setvalue.xcenter -= modi;
+		fractol->setvalue.xcenter -= fractol->center_modi;
 }

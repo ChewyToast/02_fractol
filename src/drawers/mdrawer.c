@@ -15,17 +15,17 @@
 //	Function to print the menu
 void	mdrawer(t_fractol *fractol)
 {
-	size_t	x;
-	size_t	y;
-
-	y = 0;
-	while (y <= H)
+	if (fractol->set == 'm')
 	{
-		x = W;
-		while (x < WM)
-			my_pixel_put(fractol, x++, y, 0x494949);
-		y++;
+		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1144, 30, 0x1FFFFFF, "MANDELBROT SET");
+		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1144, 40, 0x1FFFFFF, "--------------");
 	}
-	mlx_string_put(fractol->screen.ptr, fractol->screen.win, W + 20, 60, 0x494949, "RESOLUCION:");
-	mlx_string_put(fractol->screen.ptr, fractol->screen.win, W + 120, 60, fractol->get_color(83), ft_itoa(fractol->iter_max));
+	else if (fractol->set == 'j')
+	{
+		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1162, 30, 0x1FFFFFF, "JULIA SET");
+		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1162, 40, 0x1FFFFFF, "---------");
+	}
+	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1110, 750, 0x1FFFFFF, "FOR MORE RESOLUTION");
+	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1110, 760, 0x1FFFFFF, "PRESS 'Q'");
+	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1210, 760, 0x1FFFFFF, ft_itoa(fractol->plus_iter));
 }
