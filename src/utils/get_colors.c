@@ -10,67 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "mlx_and_struct.h"
+#include "fractol.h"
+
+static void	hsv_rgb(int h, int s, int v, t_fractol *fractol);
 
 int	get_color_blue(int i, t_fractol *fractol)
 {
-	if (i < fractol->iter_max * 0.02)
-		return (0x07365A);
-	else if (i < fractol->iter_max * 0.03)
-		return (0x083A61);
-	else if (i < fractol->iter_max * 0.05)
-		return (0x09416C);
-	else if (i < fractol->iter_max * 0.08)
-		return (0x094573);
-	else if (i < fractol->iter_max * 0.12)
-		return (0x0A4A7B);
-	else if (i < fractol->iter_max * 0.17)
-		return (0x0A4F83);
-	else if (i < fractol->iter_max * 0.25)
-		return (0x0C5892);
-	else if (i < fractol->iter_max * 0.30)
-		return (0x0E66A9);
-	else if (i < fractol->iter_max * 0.45)
-		return (0x0E6AB1);
-	else if (i < fractol->iter_max * 0.57)
-		return (0x0F6FB8);
-	else if (i < fractol->iter_max * 0.72)
-		return (0x0F73C0);
-	else if (i < fractol->iter_max * 0.87)
-		return (0x1078C8);
-	else if (i < fractol->iter_max)
-		return (0x1183DA);
-	else
-		return (0x149AFF);
+	hsv_rgb( 199, (i * 100 / fractol->iter_max), 90, fractol);
+//	ft_printf("I VALUDE: %d INTENSIDAD: %d\n",i , (i * 100 / fractol->iter_max));
+	return (0);
 }
-/*
-int	get_color_blue(int i, t_fractol *fractol)
+
+static void	hsv_rgb(int h, int s, int v, t_fractol *fractol)
 {
-	if (i < fractol->iter_max * 0.02)
-		return (0x075059);
-	else if (i < fractol->iter_max * 0.03)
-		return (0x083A61);
-	else if (i < fractol->iter_max * 0.05)
-		return (0x09416C);
-	else if (i < fractol->iter_max * 0.08)
-		return (0x094573);
-	else if (i < fractol->iter_max * 0.12)
-		return (0x0A4A7B);
-	else if (i < fractol->iter_max * 0.17)
-		return (0x0A4F83);
-	else if (i < fractol->iter_max * 0.25)
-		return (0x0C5892);
-	else if (i < fractol->iter_max * 0.30)
-		return (0x0E66A9);
-	else if (i < fractol->iter_max * 0.45)
-		return (0x0E6AB1);
-	else if (i < fractol->iter_max * 0.57)
-		return (0x0F6FB8);
-	else if (i < fractol->iter_max * 0.72)
-		return (0x0F73C0);
-	else if (i < fractol->iter_max * 0.87)
-		return (0x1078C8);
-	else if (i < fractol->iter_max)
-		return (0x1183DA);
-	else
-		return (0x149AFF);
-}*/
+	if (!((h * 6) % 6))
+	{
+		fractol->rgba.r = v;
+		fractol->rgba.g = v * (1 - (1 - (h * 6 - floor(h * 6))) * s);
+		fractol->rgba.b = v * (1 - s);
+	}
+	else if (((h * 6) % 6) == 1)
+	{
+		fractol->rgba.r = v * (1 - (h * 6 - floor(h * 6)) * s);
+		fractol->rgba.g = v;
+		fractol->rgba.b = v * (1 - s);
+	}
+	else if (((h * 6) % 6) == 2)
+	{
+		fractol->rgba.r = v * (1 - s);
+		fractol->rgba.g = v;
+		fractol->rgba.b = v * (1 - (1 - (h * 6 - floor(h * 6))) * s);
+	}
+	else if (((h * 6) % 6) == 3)
+	{
+		fractol->rgba.r = v * (1 - s);
+		fractol->rgba.g = v * (1 - (h * 6 - floor(h * 6)) * s);
+		fractol->rgba.b = v;
+	}
+	else if (((h * 6) % 6) == 4)
+	{
+		fractol->rgba.r = v * (1 - (1 - (h * 6 - floor(h * 6))) * s);
+		fractol->rgba.g = v * (1 - s);
+		fractol->rgba.b = v;
+	}
+	else if (((h * 6) % 6) == 5)
+	{
+		fractol->rgba.r = v;
+		fractol->rgba.g = v * (1 - s);
+		fractol->rgba.b = v * (1 - (h * 6 - floor(h * 6)) * s);
+	}
+	fractol->rgba.r *= 255;
+	fractol->rgba.g *= 255;
+	fractol->rgba.b *= 255;
+}

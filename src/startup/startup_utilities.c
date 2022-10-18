@@ -74,15 +74,19 @@ size_t	check_input(int argc, char **argv, char *set)
 		*set = 'm';
 		if (argc > 2)
 			return (error_msg(1));
+		return (1);
 	}
 	else if (!ft_strncmp(argv[1], "Julia", 0xFFFFFF)
 		|| !ft_strncmp(argv[1], "julia", 0xFFFFFF))
 	{
 		*set = 'j';
-		if (argc > 4 || argc < 4)
+		if (argc != 4 && argc != 2)
 			return (error_msg(1));
-		if (!check_input_num(argv[2], 0, 0) || !check_input_num(argv[3], 0, 0))
+		if (argc == 2)
+			return (1);
+		else if (!check_input_num(argv[2], 0, 0) || !check_input_num(argv[3], 0, 0))
 			return (error_msg(2));
+		return (1);
 	}
-	return (1);
+	return (error_msg(2));
 }

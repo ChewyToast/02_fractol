@@ -32,11 +32,13 @@ void	startup_pxl_buff(t_fractol *fractol, char *pxl_buff);
 size_t	error_msg(int mode);
 
 //		mlx_window
+void	fractol_hooks(t_fractol *fractol);
 int		window_startup(t_fractol *fractol);
 void	end_fractol(void);
 void	key_compare(int key, t_fractol *fractol);
-void	mouse_compare(int btn, t_fractol *fractol);
+void	mouse_compare(int btn, int x, int y, t_fractol *fractol);
 int		mlx_keypress(int key, t_fractol *fractol);
+int		mlx_keyrelase(int key, t_fractol *fractol);
 int		mlx_mousepress(int btn, int x, int y, t_fractol *fractol);
 
 //		drawers

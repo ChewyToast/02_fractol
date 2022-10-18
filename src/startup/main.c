@@ -21,10 +21,6 @@ int	main(int argc, char **argv)
 
 	if (!check_input(argc, argv, &set))
 		return (0);
-	if (set == 'm')
-		printf("Mandelbrot set selected\n");
-	if (set == 'j')
-		printf("Julia set selected\n");
 	if (!program_startup(set, argv))
 		error_msg(5);
 	exit (0);
@@ -42,9 +38,6 @@ static size_t	program_startup(char select, char **argv)
 		mlx_destroy_window(fractol.screen.ptr, fractol.screen.win);
 		return (0);
 	}
-	drawer(&fractol);
-	mlx_hook(fractol.screen.win, 2, 0, mlx_keypress, &fractol);
-	mlx_hook(fractol.screen.win, 4, 0, mlx_mousepress, &fractol);
-	mlx_loop(fractol.screen.ptr);
+	fractol_hooks(&fractol);
 	return (1);
 }

@@ -24,7 +24,8 @@ SRC_DRW =		src/drawers/fdrawers.c			\
 				src/drawers/my_pixel_put.c
 
 # All the source of mlx_window
-SRC_MLXW = 		src/mlx_window/window.c			\
+SRC_MLXW = 		src/mlx_window/hooks.c			\
+				src/mlx_window/window.c			\
 				src/mlx_window/mlx_inputs.c		\
 				src/mlx_window/mouse_events.c	\
 				src/mlx_window/key_events.c
@@ -103,22 +104,26 @@ MAKE_MLX =		inc/mlx
 #	----------------------------------------	COMPILATION
 
 # Variable to compile .c files
-GCC =			gcc
+GCC =			gcc -o3
 
 # Flags for the gcc compilation
 FLAGS =			-Wall -Werror -Wextra
-
-MLX_FLAGS = 	-L. -lft -lmlx -lftprintf
-
-OGL_FLAGS =		-framework OpenGL -framework AppKit
 
 MINILIBXCC :=	-I mlx -L $(DIR_MLX) -lmlx
 
 OPENGL			:= -framework OpenGL -framework AppKit
 
+# Git submodule update
+GSU =			git submodule update
+
+# Flags for GSU
+GSU_FLAGS =		--remote --merge --recursive
+
 #	----------------------------------------	COLORS
 
 # Colors
+ITALIC =		\033[3m
+BOLD =			\033[1m
 DEF_COLOR =		\033[0;39m
 GRAY =			\033[0;90m
 RED =			\033[0;91m
@@ -130,20 +135,22 @@ CYAN =			\033[0;96m
 WHITE =			\033[0;97m
 BLACK =			\033[0;99m
 ORANGE =		\033[38;5;209m
-BROWN =			\033[38;5;94m
+BROWN =			\033[38;2;184;143;29m
 DARK_GRAY =		\033[38;5;234m
 MID_GRAY =		\033[38;5;245m
-DARK_GREEN =	\033[38;5;64m
+DARK_GREEN =	\033[38;2;75;179;82m
 DARK_YELLOW =	\033[38;5;143m
-
 
 #	----------------------------------------	ACTIONS
 
 all:
 					@$(MAKE) -C $(MAKE_BM)
 					@$(MAKE) -C $(MAKE_MLX)
-					@echo "make $(NAME)"
 					@$(MAKE) $(NAME)
+
+update:
+					@echo "$(BROWN)Updating submodules"
+					@$(GSU) $(GSU_FLAGS)
 
 clean:
 					@rm -f $(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
@@ -161,27 +168,35 @@ re:
 					@$(MAKE) fclean
 					@$(MAKE) all
 
-$(NAME) :			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
+$(NAME) ::			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
+					@printf "\r                                                                                                      "
+					@printf "\r Compiling $@"
 					@$(GCC) $(FLAGS) $^ $(BMLIB) $(MINILIBXCC) $(OPENGL) -o $@
 
+$(NAME) ::
+					@printf "\r$(BOLD)$(DARK_GREEN)FRACTOL COMPILED ✅\n"
 
 $(DRW_DIR)%.o :		$(DRW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@echo "$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r                                                                                                      "
+					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(MLXW_DIR)%.o :	$(MLXW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@echo "$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r                                                                                                      "
+					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(STRT_DIR)%.o :	$(STRT_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@echo "$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r                                                                                                      "
+					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(UTIL_DIR)%.o :	$(UTIL_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@echo "$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r                                                                                                      "
+					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-.PHONY:			all clean fclean re
+.PHONY:			all update clean fclean re
 
 
 

@@ -1,0 +1,284 @@
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ➜ make                                                                   
+BMLIB COMPILED ✅
+MLX COMPILED ✅
+gcc -o3 -Wall -Werror -Wextra -c src/drawers/fdrawers.c -o src/drawers/fdrawers.oIn file included from src/drawers/f​‌​
+drawers.c:12:
+inc/headers/mlx_and_struct.h:89:2: error: unknown type name 'bool'
+        bool            shift_press;
+        ^
+In file included from src/drawers/fdrawers.c:13:
+inc/headers/fractol.h:40:48: error: expected ';' after top level declarator
+int             mlx_keyrelase(int key, t_fractol *fractol)
+                                                          ^
+                                                          ;
+2 errors generated.
+make[1]: *** [src/drawers/fdrawers.o] Error 1
+make: *** [all] Error 2
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜                                                                      
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ make re                                                              
+BMLIB COMPILED ✅
+MLX COMPILED ✅
+gcc -o3 -Wall -Werror -Wextra -c src/drawers/fdrawers.c -o src/drawers/fdrawers.oIn file included from src/drawers/f​‌​
+drawers.c:12:
+inc/headers/mlx_and_struct.h:89:2: error: unknown type name 'bool'
+        bool            shift_press;
+        ^
+1 error generated.                              
+make[2]: *** [src/drawers/fdrawers.o] Error 1                              
+make[1]: *** [all] Error 2                                
+make: *** [re] Error 2                                     
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ norm src                                                             
+./inc/bmlib/bmlib.h: OK!
+./inc/bmlib/libraries/00_libft/ft_atoi.c: OK!
+./inc/bmlib/libraries/00_libft/ft_bzero.c: OK!
+./inc/bmlib/libraries/00_libft/ft_calloc.c: OK!                                                                     
+./inc/bmlib/libraries/00_libft/ft_isalnum.c: OK!
+./inc/bmlib/libraries/00_libft/ft_isalpha.c: OK!
+./inc/bmlib/libraries/00_libft/ft_isascii.c: OK!
+./inc/bmlib/libraries/00_libft/ft_isdigit.c: OK!
+./inc/bmlib/libraries/00_libft/ft_isprint.c: OK!
+./inc/bmlib/libraries/00_libft/ft_itoa.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstadd_back_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstadd_front_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstclear_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstdelone_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstiter_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstlast_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstmap_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstnew_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_lstsize_bonus.c: OK!
+./inc/bmlib/libraries/00_libft/ft_memchr.c: OK!
+./inc/bmlib/libraries/00_libft/ft_memcmp.c: OK!
+./inc/bmlib/libraries/00_libft/ft_memcpy.c: OK!
+./inc/bmlib/libraries/00_libft/ft_memmove.c: OK!
+./inc/bmlib/libraries/00_libft/ft_memset.c: OK!
+./inc/bmlib/libraries/00_libft/ft_putchar_fd.c: OK!
+./inc/bmlib/libraries/00_libft/ft_putendl_fd.c: OK!
+./inc/bmlib/libraries/00_libft/ft_putnbr_fd.c: OK!
+./inc/bmlib/libraries/00_libft/ft_putstr_fd.c: OK!
+./inc/bmlib/libraries/00_libft/ft_split.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strchr.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strdup.c: OK!
+./inc/bmlib/libraries/00_libft/ft_striteri.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strjoin.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strlcat.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strlcpy.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strlen.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strmapi.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strncmp.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strnstr.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strrchr.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strrspn.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strspn.c: OK!
+./inc/bmlib/libraries/00_libft/ft_strtrim.c: OK!
+./inc/bmlib/libraries/00_libft/ft_substr.c: OK!
+./inc/bmlib/libraries/00_libft/ft_tolower.c: OK!
+./inc/bmlib/libraries/00_libft/ft_toupper.c: OK!
+./inc/bmlib/libraries/00_libft/libft.h: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/a_ft_printf.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/b_ft_read.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_10to16.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_itoa.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_printf.h: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_ptoa.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_putchar.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_putstr.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_strlen.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf/ft_uitoa.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/a_ft_printf_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/b_ft_read_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_10to16_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_a_convert_i_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_itoa_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_printf_bonus.h: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_ptoa_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_putchar_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_putstr_bonus.c: OK!
+./inc/bmlib/libraries/01_ft_printf/ft_printf_bonus/ft_uitoa_bonus.c: OK!
+./inc/bmlib/libraries/gnl_for_bmlib/src/get_next_line.c: OK!
+./inc/bmlib/libraries/gnl_for_bmlib/src/get_next_line.h: OK!
+./inc/bmlib/libraries/gnl_for_bmlib/src/get_next_line_bonus.c: OK!
+./inc/bmlib/libraries/gnl_for_bmlib/src/get_next_line_bonus.h: OK!
+./inc/bmlib/libraries/gnl_for_bmlib/src/get_next_line_utils.c: OK!
+./inc/bmlib/libraries/gnl_for_bmlib/src/get_next_line_utils_bonus.c: OK!
+./inc/headers/fractol.h: OK!
+Traceback (most recent call last):
+  File "/usr/local/bin/norminette", line 10, in <module>
+    sys.exit(main())
+  File "/Library/Python/3.8/site-packages/norminette/__main__.py", line 121, in main
+    registry.run(context, source)
+  File "/Library/Python/3.8/site-packages/norminette/registry.py", line 65, in run
+    ret, jump = self.run_rules(context, rule)
+  File "/Library/Python/3.8/site-packages/norminette/registry.py", line 43, in run_rules
+    self.run_rules(context, self.rules[r])
+  File "/Library/Python/3.8/site-packages/norminette/registry.py", line 32, in run_rules
+    rule.run(context)
+  File "/Library/Python/3.8/site-packages/norminette/rules/check_preprocessor_define.py", line 127, in run
+    context.new_error("HEADER_PROT_ALL_2", context.peek_token(i))
+  File "/Library/Python/3.8/site-packages/norminette/context.py", line 204, in new_error
+    self.errors.append(NormError(errno, tkn.pos[0], tkn.pos[1]))
+AttributeError: 'NoneType' object has no attribute 'pos'
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜                                                                      
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ norminette src/*                                                     
+src/drawers/drawer.c: Error!                               
+Error: LINE_TOO_LONG        (line:  18, col:  86):      line too long
+Error: LINE_TOO_LONG        (line:  21, col:  86):      line too long
+Error: BRACE_SHOULD_EOL     (line:  22, col:   1):      Expected newline after brace
+src/drawers/fdrawers.c: Error!                        
+Error: LINE_TOO_LONG        (line:  15, col:  84):      line too long
+Error: LINE_TOO_LONG        (line:  31, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  33, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  58, col:  86):      line too long
+Error: LINE_TOO_LONG        (line:  60, col:  86):      line too long
+Error: LINE_TOO_LONG        (line:  72, col:  84):      line too long
+Error: EMPTY_LINE_EOF       (line:  92, col:   1):      Empty line at end of file
+src/drawers/mdrawer.c: Error!                  
+Error: LINE_TOO_LONG        (line:  20, col:  85):      line too long
+Error: LINE_TOO_LONG        (line:  21, col:  85):      line too long
+Error: LINE_TOO_LONG        (line:  25, col:  85):      line too long
+Error: LINE_TOO_LONG        (line:  26, col:  85):      line too long
+Error: LINE_TOO_LONG        (line:  28, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  29, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  30, col:  82):      line too long
+Error: BRACE_SHOULD_EOL     (line:  31, col:   1):      Expected newline after brace
+src/drawers/my_pixel_put.c: Error!              
+Error: LINE_TOO_LONG        (line:  30, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  31, col:  82):      line too long
+Error: NEWLINE_PRECEDES_FUNC (line:  38, col:   1):     Functions must be separated by a newline
+src/mlx_window/hooks.c: Error!                  
+Error: BRACE_SHOULD_EOL     (line:  37, col:   1):      Expected newline after brace
+src/mlx_window/key_events.c: Error!             
+Error: LINE_TOO_LONG        (line:  22, col:  83):      line too long
+Error: LINE_TOO_LONG        (line:  32, col:  86):      line too long
+Error: LINE_TOO_LONG        (line:  39, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  44, col:  82):      line too long
+Error: EMPTY_LINE_FUNCTION  (line:  48, col:   1):      Empty line in function
+src/mlx_window/mlx_inputs.c: OK!                
+src/mlx_window/mouse_events.c: Error!           
+Error: LINE_TOO_LONG        (line:  24, col:  82):      line too long
+Error: WRONG_SCOPE_COMMENT  (line:  25, col:   1):      Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  30, col:  82):      line too long
+Error: WRONG_SCOPE_COMMENT  (line:  31, col:   1):      Comment is invalid in this scope
+src/mlx_window/window.c: Error!                            
+Error: LINE_TOO_LONG        (line:  24, col:  85):      line too long
+src/startup/initialize.c: OK!                              
+src/startup/main.c: OK!                                       
+src/startup/startup_utilities.c: Error!                      
+Error: LINE_TOO_LONG        (line:  86, col:  82):      line too long
+src/utils/double_atoi.c: OK!                                
+src/utils/double_itoa.c: Error!                                            
+Error: BRACE_SHOULD_EOL     (line:  49, col:   1):      Expected newline after brace
+Error: TOO_MANY_LINES       (line:  49, col:   1):      Function has more than 25 lines
+src/utils/get_colors.c: Error!                                                
+Error: NO_SPC_AFR_PAR       (line:  19, col:  12):      Extra space after parenthesis (brace/bracket)
+Error: WRONG_SCOPE_COMMENT  (line:  20, col:   1):      Comment is invalid in this scope
+Error: TOO_MANY_LINES       (line:  65, col:   1):      Function has more than 25 lines
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜                                                                      
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ norminette src/*                                                     
+src/drawers/drawer.c: Error!                               
+Error: BRACE_SHOULD_EOL     (line:  24, col:   1):      Expected newline after brace
+src/drawers/fdrawers.c: Error!                                       
+Error: LINE_TOO_LONG        (line:  15, col:  84):      line too long               
+Error: LINE_TOO_LONG        (line:  31, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  33, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  58, col:  86):      line too long
+Error: LINE_TOO_LONG        (line:  60, col:  86):      line too long
+Error: LINE_TOO_LONG        (line:  72, col:  84):      line too long
+Error: EMPTY_LINE_EOF       (line:  92, col:   1):      Empty line at end of file
+src/drawers/mdrawer.c: Error!                                        
+Error: LINE_TOO_LONG        (line:  20, col:  85):      line too long            
+Error: LINE_TOO_LONG        (line:  21, col:  85):      line too long
+Error: LINE_TOO_LONG        (line:  25, col:  85):      line too long
+Error: LINE_TOO_LONG        (line:  26, col:  85):      line too long
+Error: LINE_TOO_LONG        (line:  28, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  29, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  30, col:  82):      line too long
+Error: BRACE_SHOULD_EOL     (line:  31, col:   1):      Expected newline after brace
+src/drawers/my_pixel_put.c: Error!                                   
+Error: LINE_TOO_LONG        (line:  30, col:  82):      line too long               
+Error: LINE_TOO_LONG        (line:  31, col:  82):      line too long
+Error: NEWLINE_PRECEDES_FUNC (line:  38, col:   1):     Functions must be separated by a newline
+src/mlx_window/hooks.c: Error!                                       
+Error: BRACE_SHOULD_EOL     (line:  37, col:   1):      Expected newline after brace            
+src/mlx_window/key_events.c: Error!             
+Error: LINE_TOO_LONG        (line:  22, col:  83):      line too long               
+Error: LINE_TOO_LONG        (line:  32, col:  86):      line too long
+Error: LINE_TOO_LONG        (line:  39, col:  82):      line too long
+Error: LINE_TOO_LONG        (line:  44, col:  82):      line too long
+Error: EMPTY_LINE_FUNCTION  (line:  48, col:   1):      Empty line in function
+src/mlx_window/mlx_inputs.c: OK!                                     
+src/mlx_window/mouse_events.c: Error!                                         
+Error: LINE_TOO_LONG        (line:  24, col:  82):      line too long
+Error: WRONG_SCOPE_COMMENT  (line:  25, col:   1):      Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  30, col:  82):      line too long
+Error: WRONG_SCOPE_COMMENT  (line:  31, col:   1):      Comment is invalid in this scope
+src/mlx_window/window.c: Error!                                      
+Error: LINE_TOO_LONG        (line:  24, col:  85):      line too long                   
+src/startup/initialize.c: OK!                              
+src/startup/main.c: OK!                                              
+src/startup/startup_utilities.c: Error!                    
+Error: LINE_TOO_LONG        (line:  86, col:  82):      line too long
+src/utils/double_atoi.c: OK!                                 
+src/utils/double_itoa.c: Error!                                      
+Error: BRACE_SHOULD_EOL     (line:  49, col:   1):      Expected newline after brace
+Error: TOO_MANY_LINES       (line:  49, col:   1):      Function has more than 25 lines
+src/utils/get_colors.c: Error!                                                      
+Error: NO_SPC_AFR_PAR       (line:  19, col:  12):      Extra space after parenthesis (brace/bracket)
+Error: WRONG_SCOPE_COMMENT  (line:  20, col:   1):      Comment is invalid in this scope
+Error: TOO_MANY_LINES       (line:  65, col:   1):      Function has more than 25 lines              
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜                                                                      
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ make re
+BMLIB COMPILED ✅                                          
+MLX COMPILED ✅                                                                     
+gcc -o3 -Wall -Werror -Wextra -c src/mlx_window/hooks.c -o src/mlx_window/hooks.osrc/mlx_window/hooks.c:20:66: error​‌​
+: too many arguments to function call, expected 3, have 4                           
+        mlx_mouse_get_pos(fractol->screen.ptr, fractol->screen.win, &x, &y);
+        ~~~~~~~~~~~~~~~~~                                               ^~
+inc/headers/../mlx/mlx.h:143:1: note: 'mlx_mouse_get_pos' declared here
+int     mlx_mouse_get_pos(void *win_ptr, int *x, int *y);            
+^                                                                    
+src/mlx_window/hooks.c:32:38: error: incompatible function pointer types passing 'void (*)(t_fractol *)'
+      (aka 'void (*)(struct s_fractol *)') to parameter of type 'int (*)()'
+      [-Werror,-Wincompatible-function-pointer-types]                            
+                mlx_loop_hook(fractol->screen.win, &mouse_loop, fractol);
+                                                   ^~~~~~~~~~~       
+inc/headers/../mlx/mlx.h:101:41: note: passing argument to parameter 'funct_ptr' here
+int     mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(), void *param);
+                                            ^                        
+2 errors generated.                                                  
+make[2]: *** [src/mlx_window/hooks.o] Error 1                                       
+make[1]: *** [all] Error 2                                           
+make: *** [re] Error 2                                                              
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ make re
+BMLIB COMPILED ✅                                                                               
+MLX COMPILED ✅                                                      
+gcc -o3 -Wall -Werror -Wextra -c src/mlx_window/hooks.c -o src/mlx_window/hooks.osrc/mlx_window/hooks.c:32:38: error​‌​
+: incompatible function pointer types passing 'void (*)(t_fractol *)'
+      (aka 'void (*)(struct s_fractol *)') to parameter of type 'int (*)()'         
+      [-Werror,-Wincompatible-function-pointer-types]                
+                mlx_loop_hook(fractol->screen.win, &mouse_loop, fractol);
+                                                   ^~~~~~~~~~~       
+inc/headers/../mlx/mlx.h:101:41: note: passing argument to parameter 'funct_ptr' here
+int     mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(), void *param);
+                                            ^                                 
+1 error generated.                                                   
+make[2]: *** [src/mlx_window/hooks.o] Error 1                                           
+make[1]: *** [all] Error 2                                           
+make: *** [re] Error 2                                                                  
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ make re
+BMLIB COMPILED ✅                                                                       
+MLX COMPILED ✅                                            
+gcc -o3 -Wall -Werror -Wextra -c src/mlx_window/hooks.c -o src/mlx_window/hooks.osrc/mlx_window/hooks.c:32:38: error​‌​
+: incompatible function pointer types passing 'void (*)(t_fractol *)'
+      (aka 'void (*)(struct s_fractol *)') to parameter of type 'int (*)()'
+      [-Werror,-Wincompatible-function-pointer-types]        
+                mlx_loop_hook(fractol->screen.win, &mouse_loop, fractol);
+                                                   ^~~~~~~~~~~                      
+inc/headers/../mlx/mlx.h:101:41: note: passing argument to parameter 'funct_ptr' here  
+int     mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(), void *param);             
+                                            ^                                                        
+1 error generated.                                                                      
+make[2]: *** [src/mlx_window/hooks.o] Error 1                                                        
+make[1]: *** [all] Error 2                                                                                          
+make: *** [re] Error 2                                                                 
+bmoll-pe@car4s2:02_fractol master ✗ 2d △ ◒ ⍉ ➜ 

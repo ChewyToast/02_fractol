@@ -19,7 +19,7 @@ void	key_compare(int key, t_fractol *fractol)
 {
 	if (key == 53)
 		end_fractol();
-	else if (key == 126 || (key == 125) || (key == 124) || (key == 123))
+	else if (key == 126 || (key == 125) || (key == 124) || (key == 123) || (key == 8))
 		move_center(key, fractol);
 	else
 		cli_ask(key, fractol);
@@ -43,6 +43,9 @@ static void	cli_ask(int key, t_fractol *fractol)
 		fractol->plus_iter -= 20;
 		fractol->iter_max = fractol->plus_iter * pow(log10(fractol->setvalue.zoom + 10), 1.25);
 	}
+	else if (key == 257 && fractol->set == 'j')
+		fractol->shift_press = 1;
+
 	ft_printf("keypress: %d", key);
 }
 
@@ -56,4 +59,10 @@ static void	move_center(int key, t_fractol *fractol)
 		fractol->setvalue.xcenter += fractol->center_modi;
 	if (key == 123)
 		fractol->setvalue.xcenter -= fractol->center_modi;
+	if (key == 8)
+	{
+		fractol->setvalue.ycenter = 0;
+		fractol->setvalue.xcenter = 0;
+		fractol->setvalue.zoom = 1;
+	}
 }

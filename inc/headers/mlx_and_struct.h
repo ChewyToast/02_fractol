@@ -55,12 +55,12 @@ typedef struct s_setvalue
 	double		cy;
 }				t_setvalue;
 
-typedef struct s_myrgba
+typedef struct s_myrgb
 {
 	int	r;
 	int	g;
 	int	b;
-}				t_myrgba;
+}				t_myrgb;
 
 typedef struct s_img
 {
@@ -80,12 +80,13 @@ struct s_fractol
 	t_fdrawer	t_fdrawer;
 	t_mdrawer	t_mdrawer;
 	t_get_color	get_color;
-	t_myrgba	rgba;
+	t_myrgb		rgba;
 	t_img		img;
 	char		color_index;
 	double		center_modi;
 	int			plus_iter;
 	int			iter_max;
+	_Bool		shift_press;
 };
 
 //	Defines
