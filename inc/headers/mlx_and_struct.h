@@ -62,6 +62,13 @@ typedef struct s_myrgb
 	int	b;
 }				t_myrgb;
 
+typedef struct s_setcolor
+{
+	int	count;
+	int	start;
+	int	end;
+}				t_setcolor;
+
 typedef struct s_img
 {
 	char	*buff;
@@ -82,6 +89,7 @@ struct s_fractol
 	t_get_color	get_color;
 	t_myrgb		rgba;
 	t_img		img;
+	t_setcolor	setcolor;
 	char		color_index;
 	double		center_modi;
 	int			plus_iter;

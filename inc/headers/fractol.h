@@ -34,7 +34,7 @@ size_t	error_msg(int mode);
 //		mlx_window
 void	fractol_hooks(t_fractol *fractol);
 int		window_startup(t_fractol *fractol);
-void	end_fractol(void);
+int	end_fractol(t_fractol *fractol);
 void	key_compare(int key, t_fractol *fractol);
 void	mouse_compare(int btn, int x, int y, t_fractol *fractol);
 int		mlx_keypress(int key, t_fractol *fractol);

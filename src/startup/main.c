@@ -20,9 +20,9 @@ int	main(int argc, char **argv)
 	char	set;
 
 	if (!check_input(argc, argv, &set))
-		return (0);
+		exit (0);
 	if (!program_startup(set, argv))
-		error_msg(5);
+		exit (error_msg(6));
 	exit (0);
 }
 
@@ -34,10 +34,7 @@ static size_t	program_startup(char select, char **argv)
 	if (!init_fract(&fractol, select, argv))
 		return (0);
 	if (!window_startup(&fractol))
-	{
-		mlx_destroy_window(fractol.screen.ptr, fractol.screen.win);
-		return (0);
-	}
+		end_fractol(&fractol);
 	fractol_hooks(&fractol);
 	return (1);
 }

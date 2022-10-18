@@ -15,6 +15,11 @@
 //	Has its name suggests, this function display the error and return 0
 size_t	error_msg(int mode)
 {
+	if (mode == 6)
+	{
+		ft_printf("Unexpected error");
+		return (0);
+	}
 	if (mode == 1)
 	{
 		ft_printf("Invalid number of arguments\n");

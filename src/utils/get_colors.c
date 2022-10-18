@@ -12,54 +12,41 @@
 #include "mlx_and_struct.h"
 #include "fractol.h"
 
-static void	hsv_rgb(int h, int s, int v, t_fractol *fractol);
+// static void	hsv_rgb(int h, int s, int v, t_fractol *fractol);
+static int	ft_round(double num);
+static int	gradient(int startcolor, int endcolor, int len, int i);
 
 int	get_color_blue(int i, t_fractol *fractol)
 {
-	hsv_rgb( 199, (i * 100 / fractol->iter_max), 90, fractol);
-//	ft_printf("I VALUDE: %d INTENSIDAD: %d\n",i , (i * 100 / fractol->iter_max));
-	return (0);
+	return(gradient(fractol->setcolor.start, fractol->setcolor.end,
+			fractol->iter_max, i));
 }
 
-static void	hsv_rgb(int h, int s, int v, t_fractol *fractol)
+static int	gradient(int startcolor, int endcolor, int len, int i)
 {
-	if (!((h * 6) % 6))
-	{
-		fractol->rgba.r = v;
-		fractol->rgba.g = v * (1 - (1 - (h * 6 - floor(h * 6))) * s);
-		fractol->rgba.b = v * (1 - s);
-	}
-	else if (((h * 6) % 6) == 1)
-	{
-		fractol->rgba.r = v * (1 - (h * 6 - floor(h * 6)) * s);
-		fractol->rgba.g = v;
-		fractol->rgba.b = v * (1 - s);
-	}
-	else if (((h * 6) % 6) == 2)
-	{
-		fractol->rgba.r = v * (1 - s);
-		fractol->rgba.g = v;
-		fractol->rgba.b = v * (1 - (1 - (h * 6 - floor(h * 6))) * s);
-	}
-	else if (((h * 6) % 6) == 3)
-	{
-		fractol->rgba.r = v * (1 - s);
-		fractol->rgba.g = v * (1 - (h * 6 - floor(h * 6)) * s);
-		fractol->rgba.b = v;
-	}
-	else if (((h * 6) % 6) == 4)
-	{
-		fractol->rgba.r = v * (1 - (1 - (h * 6 - floor(h * 6))) * s);
-		fractol->rgba.g = v * (1 - s);
-		fractol->rgba.b = v;
-	}
-	else if (((h * 6) % 6) == 5)
-	{
-		fractol->rgba.r = v;
-		fractol->rgba.g = v * (1 - s);
-		fractol->rgba.b = v * (1 - (h * 6 - floor(h * 6)) * s);
-	}
-	fractol->rgba.r *= 255;
-	fractol->rgba.g *= 255;
-	fractol->rgba.b *= 255;
+	double	increment[3];
+	int		new[3];
+	int		newcolor;
+
+	increment[0] = (double)((endcolor >> 16) - \
+					(startcolor >> 16)) / (double)len;
+	increment[1] = (double)(((endcolor >> 8) & 0xFF) - \
+					((startcolor >> 8) & 0xFF)) / (double)len;
+	increment[2] = (double)((endcolor & 0xFF) - (startcolor & 0xFF)) \
+					/ (double)len;
+	new[0] = (startcolor >> 16) + ft_round(i * increment[0]);
+	new[1] = ((startcolor >> 8) & 0xFF) + ft_round(i * increment[1]);
+	new[2] = (startcolor & 0xFF) + ft_round(i * increment[2]);
+	newcolor = (new[0] << 16) + (new[1] << 8) + new[2];
+	return (newcolor);
+}
+
+static int	ft_round(double num)
+{
+	int	rounded;
+
+	rounded = (int)num;
+	if (num - rounded >= .5)
+		rounded++;
+	return (rounded);
 }

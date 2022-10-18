@@ -17,6 +17,9 @@ static size_t	init_julia(t_fractol *fractol, char **argv);
 
 size_t	init_fract(t_fractol *fractol, char select, char **argv)
 {
+	fractol->screen.ptr = NULL;
+	fractol->screen.win = NULL;
+	fractol->screen.img = NULL;
 	if (select == 'm')
 		return (init_mandelbrot(fractol));
 	else if (select == 'j')
@@ -26,8 +29,11 @@ size_t	init_fract(t_fractol *fractol, char select, char **argv)
 
 static size_t	init_mandelbrot(t_fractol *fractol)
 {
+	fractol->setcolor.count = 0;
+	fractol->setcolor.start = 0x61208C;
+	fractol->setcolor.end = 0xF0F000;
 	fractol->set = 'm';
-	fractol->setvalue.zoom = 1;
+	fractol->setvalue.zoom = 0.5;
 	fractol->plus_iter = 50;
 	fractol->center_modi = 0.1 / fractol->setvalue.zoom;
 	fractol->iter_max = 50;
@@ -44,9 +50,12 @@ static size_t	init_mandelbrot(t_fractol *fractol)
 
 static size_t	init_julia(t_fractol *fractol, char **argv)
 {
+	fractol->setcolor.count = 0;
+	fractol->setcolor.start = 0x61208C;
+	fractol->setcolor.end = 0xF0F000;
 	fractol->set = 'j';
 	fractol->plus_iter = 50;
-	fractol->setvalue.zoom = 1;
+	fractol->setvalue.zoom = 0.5;
 	fractol->center_modi = 0.1 / fractol->setvalue.zoom;
 	fractol->iter_max = 50;
 	fractol->t_mdrawer = mdrawer;

@@ -15,6 +15,9 @@
 //	Function to print the menu
 void	mdrawer(t_fractol *fractol)
 {
+	char	*tmp;
+
+	tmp = ft_itoa(fractol->plus_iter);
 	if (fractol->set == 'm')
 	{
 		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1144, 30, 0x1FFFFFF, "MANDELBROT SET");
@@ -24,8 +27,12 @@ void	mdrawer(t_fractol *fractol)
 	{
 		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1162, 30, 0x1FFFFFF, "JULIA SET");
 		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1162, 40, 0x1FFFFFF, "---------");
+		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1100, 650, 0x1FFFFFF, "Hold 'SHIFT' and move");
+		mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1100, 665, 0x1FFFFFF, "to see the magic");
 	}
-	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1110, 750, 0x1FFFFFF, "FOR MORE RESOLUTION");
-	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1110, 760, 0x1FFFFFF, "PRESS 'Q'");
-	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1210, 760, 0x1FFFFFF, ft_itoa(fractol->plus_iter));
+	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1100, 700, 0x1FFFFFF, "For more or less resolution");
+	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1100, 715, 0x1FFFFFF, "press 'Q' or 'W':");
+	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1225, 715, 0x1FFFFFF, tmp);
+	mlx_string_put(fractol->screen.ptr, fractol->screen.win, 1100, 770, 0x1FFFFFF, "If u feel lost press 'C'");
+	free (tmp);
 }
