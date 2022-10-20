@@ -38,7 +38,6 @@ SRC_STRT = 		src/startup/startup_utilities.c	\
 # All the source of utils
 SRC_UTIL = 		src/utils/double_atoi.c			\
 				src/utils/get_colors.c
-#				src/utils/double_itoa.c
 
 #	----------------------------------------	SRC DIR
 
@@ -154,18 +153,25 @@ update:
 
 clean:
 					@rm -f $(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
+					@printf "All fractol objects removed\n"
 
 fclean:
-					@$(MAKE) clean
+					@rm -f $(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 					@rm -f $(NAME)
+					@printf "All fractol files $(RED)removed\n$(DEF_COLOR)"
 
 fcleanall:
-					@$(MAKE) fclean
 					@$(MAKE) fclean -C $(MAKE_BM)
 					@$(MAKE) clean -C $(MAKE_MLX)
+					@printf "All mlx files $(RED)removed\n$(DEF_COLOR)"
+					@$(MAKE) fclean
 
 re:
 					@$(MAKE) fclean
+					@$(MAKE) all
+
+reall:
+					@$(MAKE) fcleanall
 					@$(MAKE) all
 
 $(NAME) ::			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
@@ -174,29 +180,29 @@ $(NAME) ::			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 					@$(GCC) $(FLAGS) $^ $(BMLIB) $(MINILIBXCC) $(OPENGL) -o $@
 
 $(NAME) ::
-					@printf "\r$(BOLD)$(DARK_GREEN)FRACTOL COMPILED ✅\n"
+					@printf "\r$(BOLD)$(DARK_GREEN)FRACTOL COMPILED ✅$(DEF_COLOR)\n"
 
 $(DRW_DIR)%.o :		$(DRW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@printf "\r                                                                                                      "
-					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(MLXW_DIR)%.o :	$(MLXW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@printf "\r                                                                                                      "
-					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(STRT_DIR)%.o :	$(STRT_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@printf "\r                                                                                                      "
-					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(UTIL_DIR)%.o :	$(UTIL_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
 					@printf "\r                                                                                                      "
-					@printf "\r$(BROWN)$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-.PHONY:			all update clean fclean re
+.PHONY:			all update clean fclean re reall
 
 
 

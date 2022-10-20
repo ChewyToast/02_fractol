@@ -81,6 +81,12 @@ size_t	check_input(int argc, char **argv, char *set)
 			return (error_msg(1));
 		return (1);
 	}
+	else if (!ft_strncmp(argv[1], "tricorn", 0xFFFFFF)
+		|| !ft_strncmp(argv[1], "Tricorn", 0xFFFFFF))
+	{
+		*set = 't';
+		return (1);
+	}
 	else if (!ft_strncmp(argv[1], "Julia", 0xFFFFFF)
 		|| !ft_strncmp(argv[1], "julia", 0xFFFFFF))
 	{
@@ -89,7 +95,8 @@ size_t	check_input(int argc, char **argv, char *set)
 			return (error_msg(1));
 		if (argc == 2)
 			return (1);
-		else if (!check_input_num(argv[2], 0, 0) || !check_input_num(argv[3], 0, 0))
+		else if (!check_input_num(argv[2], 0, 0)
+			|| !check_input_num(argv[3], 0, 0))
 			return (error_msg(2));
 		return (1);
 	}

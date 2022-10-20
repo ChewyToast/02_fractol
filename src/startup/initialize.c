@@ -14,16 +14,40 @@
 
 static size_t	init_mandelbrot(t_fractol *fractol);
 static size_t	init_julia(t_fractol *fractol, char **argv);
+static size_t	init_tricorn(t_fractol *fractol);
 
 size_t	init_fract(t_fractol *fractol, char select, char **argv)
 {
-	fractol->screen.ptr = NULL;
-	fractol->screen.win = NULL;
+	PTR = NULL;
+	WIN = NULL;
 	fractol->screen.img = NULL;
 	if (select == 'm')
 		return (init_mandelbrot(fractol));
 	else if (select == 'j')
 		return (init_julia(fractol, argv));
+	else if (select == 't')
+		return (init_tricorn(fractol));
+	return (1);
+}
+
+static size_t	init_tricorn(t_fractol *fractol)
+{
+	fractol->setcolor.count = 0;
+	fractol->setcolor.start = 0x61208C;
+	fractol->setcolor.end = 0xF0F000;
+	fractol->set = 't';
+	fractol->setvalue.zoom = 0.5;
+	fractol->plus_iter = 50;
+	fractol->center_modi = 0.1 / fractol->setvalue.zoom;
+	fractol->iter_max = 50;
+	fractol->shift_press = 0;
+	fractol->setvalue.cx = 0;
+	fractol->setvalue.cy = 0;
+	fractol->t_mdrawer = mdrawer;
+	fractol->setvalue.ycenter = 0;
+	fractol->setvalue.xcenter = 0;
+	fractol->get_color = get_color_blue;
+	fractol->t_fdrawer = draw_tricorn;
 	return (1);
 }
 

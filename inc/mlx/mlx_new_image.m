@@ -108,6 +108,34 @@ unsigned int    mlx_get_color_value(mlx_ptr_t *mlx_ptr, int color)
   return (color);
 }
 
+int mlx_string_put2(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color, unsigned char *string)
+{
+  mlx_img_ctx_t *imgctx;
+  int       gX;
+  int       gY;
+
+  if (!win_ptr->pixmgt)
+    return(0);
+
+  [(id)(win_ptr->winid) selectGLContext];
+
+  imgctx = add_img_to_ctx(mlx_ptr->font, win_ptr);
+
+  while (*string)
+  {
+    if (*string >= 32 && *string <= 127)
+    {
+      gX = (FONT_WIDTH+2)*(*string-32);
+      gY = 0;
+      [(id)(win_ptr->winid) mlx_gl_draw_font:mlx_ptr->font andCtx:imgctx andX:x andY:y andColor:color glyphX:gX glyphY:gY];
+      x += FONT_WIDTH;
+    }
+    string ++;
+  }
+  win_ptr->nb_flush ++;
+  return (0);
+}
+
 int mlx_string_put(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color, unsigned char *string)
 {
   mlx_img_ctx_t	*imgctx;

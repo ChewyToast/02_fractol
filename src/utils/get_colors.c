@@ -18,7 +18,7 @@ static int	gradient(int startcolor, int endcolor, int len, int i);
 
 int	get_color_blue(int i, t_fractol *fractol)
 {
-	return(gradient(fractol->setcolor.start, fractol->setcolor.end,
+	return (gradient(fractol->setcolor.start, fractol->setcolor.end,
 			fractol->iter_max, i));
 }
 

@@ -17,12 +17,11 @@ all:
 $(NOM)::	$(OBJ)
 			@ar -r $(NOM) $(OBJ)
 			@ranlib $(NOM)
-
 $(NOM)::
-			@printf "\033[1m\033[38;2;75;179;82mMLX COMPILED ✅\n"
+			@printf "\r\033[1m\033[38;2;75;179;82mMLX COMPILED ✅\033[0;39m\n"
 
 clean:
-			@rm -f $(NOM) $(OBJ) *~
-			@rm -f mlx_app
+	@rm -f $(NOM) $(OBJ) *~
+	@rm -f mlx_app
 
 re: clean all

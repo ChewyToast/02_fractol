@@ -100,5 +100,8 @@ struct s_fractol
 //	Defines
 # define W 1294
 # define H 800
+# define PTR fractol->screen.ptr
+# define WIN fractol->screen.win
+# define PRINT 0x1FFFFFF
 
 #endif
