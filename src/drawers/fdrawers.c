@@ -12,14 +12,13 @@
 #include "mlx_and_struct.h"
 #include "fractol.h"
 
-static int	drawer_utility(t_fractol *fractol,
-				double new_x_iter, double new_y_iter);
+static	void	func_prepare(t_fractol *fractol, int x, int y);
+static int	function_iterate(t_fractol *fractol);
 
-void	draw_tricorn(t_fractol *fractol)
+void	screen_iterate(t_fractol *fractol)
 {
 	int		x;
 	int		y;
-	int		i;
 
 	y = 0;
 	while (y < H)
@@ -27,79 +26,39 @@ void	draw_tricorn(t_fractol *fractol)
 		x = 0;
 		while (x < W)
 		{
-			fractol->setvalue.cx = (1.5 * (x - (W >> 1))
-					/ (fractol->setvalue.zoom * (W >> 1))
-					+ (fractol->setvalue.xcenter));
-			fractol->setvalue.cy = ((y - (H >> 1))
-					/ (fractol->setvalue.zoom * (H >> 1))
-					+ (fractol->setvalue.ycenter));
-			i = drawer_utility(fractol, 0, 0);
-			if (i < fractol->iter_max)
-				my_pixel_put(fractol, x++, y, fractol->get_color(i, fractol));
-			else
-				my_pixel_put(fractol, x++, y, 0x1D1C1A);
+			func_prepare(fractol, x, y);
+			my_pixel_put(fractol, x++, y,
+				get_color(function_iterate(fractol), fractol));
 		}
 		y++;
 	}
 }
 
-void	draw_julia(t_fractol *fractol)
+static	void	func_prepare(t_fractol *fractol, int x, int y)
 {
-	int		x;
-	int		y;
-	int		i;
-
-	y = 0;
-	while (y < H)
+	if (fractol->set == 'm' || fractol->set == 'b' || fractol->set == 't')
 	{
-		x = 0;
-		while (x < W)
-		{
-			i = drawer_utility(fractol, (1.5 * (x - (W >> 1))
+		fractol->setvalue.cx = (1.5 * (x - (W >> 1))
+				/ (fractol->setvalue.zoom * (W >> 1))
+				+ (fractol->setvalue.xcenter));
+		fractol->setvalue.cy = ((y - (H >> 1))
+				/ (fractol->setvalue.zoom * (H >> 1))
+				+ (fractol->setvalue.ycenter));
+		fractol->setvalue.xiter = 0;
+		fractol->setvalue.yiter = 0;
+	}
+	else if (fractol->set == 'j')
+	{
+		fractol->setvalue.xiter = (1.5 * (x - (W >> 1))
 						/ (fractol->setvalue.zoom * (W >> 1))
-						+ (fractol->setvalue.xcenter)),
-					((y - (H >> 1))
+						+ (fractol->setvalue.xcenter));
+		fractol->setvalue.yiter = ((y - (H >> 1))
 						/ (fractol->setvalue.zoom * (H >> 1))
-						+ (fractol->setvalue.ycenter)));
-			if (i < fractol->iter_max)
-				my_pixel_put(fractol, x++, y, fractol->get_color(i, fractol));
-			else
-				my_pixel_put(fractol, x++, y, 0x1D1C1A);
-		}
-		y++;
+						+ (fractol->setvalue.ycenter));
 	}
 }
 
-void	draw_mandelbrot(t_fractol *fractol)
-{
-	int		x;
-	int		y;
-	int		i;
-
-	y = 0;
-	while (y < H)
-	{
-		x = 0;
-		while (x < W)
-		{
-			fractol->setvalue.cx = (1.5 * (x - (W >> 1))
-					/ (fractol->setvalue.zoom * (W >> 1))
-					+ (fractol->setvalue.xcenter));
-			fractol->setvalue.cy = ((y - (H >> 1))
-					/ (fractol->setvalue.zoom * (H >> 1))
-					+ (fractol->setvalue.ycenter));
-			i = drawer_utility(fractol, 0, 0);
-			if (i < fractol->iter_max)
-				my_pixel_put(fractol, x++, y, fractol->get_color(i, fractol));
-			else
-				my_pixel_put(fractol, x++, y, 0x1D1C1A);
-		}
-		y++;
-	}
-}
-
-static int	drawer_utility(t_fractol *fractol,
-				double new_x_iter, double new_y_iter)
+static int	function_iterate(t_fractol *fractol)
 {
 	int		i;
 	double	old_x_iter;
@@ -107,21 +66,21 @@ static int	drawer_utility(t_fractol *fractol,
 
 	i = 0;
 	while (i < fractol->iter_max
-		&& ((new_x_iter * new_x_iter + new_y_iter * new_y_iter) < 4))
+		&& ((XIT * XIT + YIT * YIT) < 4))
 	{
-		if (fractol->set == 't')
+		if (fractol->set == 'b')
 		{
-			old_x_iter = fabs(new_x_iter);
-			old_y_iter = fabs(new_y_iter);
+			old_x_iter = fabs(XIT);
+			old_y_iter = fabs(YIT);
 		}
 		else
 		{
-			old_x_iter = new_x_iter;
-			old_y_iter = new_y_iter;
+			old_x_iter = XIT;
+			old_y_iter = YIT;
 		}
-		new_x_iter = (((old_x_iter * old_x_iter)
+		XIT = (((old_x_iter * old_x_iter)
 					- (old_y_iter * old_y_iter)) + (fractol->setvalue.cx));
-		new_y_iter = 2 * old_x_iter * old_y_iter + (fractol->setvalue.cy);
+		YIT = VAL * old_x_iter * old_y_iter + (fractol->setvalue.cy);
 		i++;
 	}
 	return (i);

@@ -45,10 +45,7 @@ static void	cli_ask(int key, t_fractol *fractol)
 	else if (key == 257)
 		fractol->shift_press = 1;
 	else if (key == 17)
-	{
-		fractol->setcolor.start = 0x09914D;
-		fractol->setcolor.end = 0x4AEAFF;
-	}
+		theme_select(fractol);
 }
 
 static void	move_center(int key, t_fractol *fractol)

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 //	Support function for "double_atoi"
-static void	atoi_utilities(const char *nptr, int dec, double *num, double *i)
+static void	atoi_utilities(char *nptr, int dec, double *num, double *i)
 {
 	while (*nptr)
 	{
@@ -32,7 +32,7 @@ static void	atoi_utilities(const char *nptr, int dec, double *num, double *i)
 }
 
 //	Function to convert a char to a double
-double	double_atoi(const char *nptr, double num, double i)
+double	double_atoi(char *nptr, double num, double i)
 {
 	double	symb;
 

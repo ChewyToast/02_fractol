@@ -12,82 +12,29 @@
 #include "fractol.h"
 #include "mlx_and_struct.h"
 
-static size_t	init_mandelbrot(t_fractol *fractol);
-static size_t	init_julia(t_fractol *fractol, char **argv);
-static size_t	init_tricorn(t_fractol *fractol);
+static void	conditionals(t_fractol *fractol, char **argv);
 
-size_t	init_fract(t_fractol *fractol, char select, char **argv)
+void	init_fractol(t_fractol *fractol, char select, char **argv)
 {
 	PTR = NULL;
 	WIN = NULL;
+	fractol->set = select;
+	fractol->iter_max = 50;
+	fractol->plus_iter = 50;
+	fractol->shift_press = 0;
 	fractol->screen.img = NULL;
-	if (select == 'm')
-		return (init_mandelbrot(fractol));
-	else if (select == 'j')
-		return (init_julia(fractol, argv));
-	else if (select == 't')
-		return (init_tricorn(fractol));
-	return (1);
-}
-
-static size_t	init_tricorn(t_fractol *fractol)
-{
 	fractol->setcolor.count = 0;
-	fractol->setcolor.start = 0x61208C;
-	fractol->setcolor.end = 0xF0F000;
-	fractol->set = 't';
 	fractol->setvalue.zoom = 0.5;
-	fractol->plus_iter = 50;
-	fractol->center_modi = 0.1 / fractol->setvalue.zoom;
-	fractol->iter_max = 50;
-	fractol->shift_press = 0;
-	fractol->setvalue.cx = 0;
-	fractol->setvalue.cy = 0;
-	fractol->t_mdrawer = mdrawer;
-	fractol->setvalue.ycenter = 0;
-	fractol->setvalue.xcenter = 0;
-	fractol->get_color = get_color_blue;
-	fractol->t_fdrawer = draw_tricorn;
-	return (1);
-}
-
-static size_t	init_mandelbrot(t_fractol *fractol)
-{
-	fractol->setcolor.count = 0;
-	fractol->setcolor.start = 0x61208C;
-	fractol->setcolor.end = 0xF0F000;
-	fractol->set = 'm';
-	fractol->setvalue.zoom = 0.5;
-	fractol->plus_iter = 50;
-	fractol->center_modi = 0.1 / fractol->setvalue.zoom;
-	fractol->iter_max = 50;
-	fractol->shift_press = 0;
-	fractol->setvalue.cx = 0;
-	fractol->setvalue.cy = 0;
-	fractol->t_mdrawer = mdrawer;
-	fractol->setvalue.ycenter = 0;
-	fractol->setvalue.xcenter = -0.45;
-	fractol->get_color = get_color_blue;
-	fractol->t_fdrawer = draw_mandelbrot;
-	return (1);
-}
-
-static size_t	init_julia(t_fractol *fractol, char **argv)
-{
-	fractol->setcolor.count = 0;
-	fractol->setcolor.start = 0x61208C;
-	fractol->setcolor.end = 0xF0F000;
-	fractol->set = 'j';
-	fractol->plus_iter = 50;
-	fractol->setvalue.zoom = 0.5;
-	fractol->center_modi = 0.1 / fractol->setvalue.zoom;
-	fractol->iter_max = 50;
-	fractol->t_mdrawer = mdrawer;
 	fractol->setvalue.xcenter = 0;
 	fractol->setvalue.ycenter = 0;
-	fractol->shift_press = 0;
-	fractol->t_fdrawer = draw_julia;
-	fractol->get_color = get_color_blue;
+	fractol->setcolor.end = 0xF7FFBF;
+	fractol->setcolor.start = 0x250040;
+	fractol->center_modi = 0.1 / fractol->setvalue.zoom;
+	conditionals(fractol, argv);
+}
+
+static void	conditionals(t_fractol *fractol, char **argv)
+{
 	if (!argv[2])
 	{
 		fractol->setvalue.cx = 0;
@@ -98,5 +45,10 @@ static size_t	init_julia(t_fractol *fractol, char **argv)
 		fractol->setvalue.cx = double_atoi(argv[2], 0, 1);
 		fractol->setvalue.cy = double_atoi(argv[3], 0, 1);
 	}
-	return (1);
+	if (fractol->set == 't')
+		VAL = -2;
+	else
+		VAL = 2;
+	if (fractol->set == 'm')
+		fractol->setvalue.xcenter = -0.45;
 }

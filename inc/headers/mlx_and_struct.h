@@ -24,11 +24,6 @@
 //	Struct declaration
 typedef struct s_fractol	t_fractol;
 
-//	Function definition to be associated to a fractal
-typedef void	(*t_fdrawer)(t_fractol *fractol);
-typedef void	(*t_mdrawer)(t_fractol *fractol);
-typedef int		(*t_get_color)(int i, t_fractol *fractol);
-
 //	Containing structure of screen pointers
 typedef struct s_mlx
 {
@@ -37,15 +32,6 @@ typedef struct s_mlx
 	void	*img;
 }				t_mlx;
 
-//	Containing structure of strings for screen info
-typedef struct s_str
-{
-	char	*set;
-	char	*posx;
-	char	*posy;
-	char	*zoom;
-}				t_str;
-
 typedef struct s_setvalue
 {
 	double		zoom;
@@ -53,14 +39,10 @@ typedef struct s_setvalue
 	double		ycenter;
 	double		cx;
 	double		cy;
+	double		xiter;
+	double		yiter;
+	int			value;
 }				t_setvalue;
-
-typedef struct s_myrgb
-{
-	int	r;
-	int	g;
-	int	b;
-}				t_myrgb;
 
 typedef struct s_setcolor
 {
@@ -82,12 +64,7 @@ struct s_fractol
 {
 	char		set;
 	t_mlx		screen;
-	t_str		str;
 	t_setvalue	setvalue;
-	t_fdrawer	t_fdrawer;
-	t_mdrawer	t_mdrawer;
-	t_get_color	get_color;
-	t_myrgb		rgba;
 	t_img		img;
 	t_setcolor	setcolor;
 	char		color_index;
@@ -100,6 +77,9 @@ struct s_fractol
 //	Defines
 # define W 1294
 # define H 800
+# define VAL fractol->setvalue.value
+# define XIT fractol->setvalue.xiter
+# define YIT fractol->setvalue.yiter
 # define PTR fractol->screen.ptr
 # define WIN fractol->screen.win
 # define PRINT 0x1FFFFFF

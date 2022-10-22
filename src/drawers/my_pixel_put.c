@@ -17,26 +17,13 @@ void	my_pixel_put(t_fractol *fractol, int x, int y, int color)
 	size_t	calc;
 
 	calc = (W * 4 * (y - 1)) + (x * 4);
-	if (color == 0)
-	{
-		fractol->img.buff[calc] = fractol->rgba.r;
-		fractol->img.buff[calc + 1] = fractol->rgba.g;
-		fractol->img.buff[calc + 2] = fractol->rgba.b;
-		if (x > 1094)
-			fractol->img.buff[calc + 3] = 90;
-		else
-			fractol->img.buff[calc + 3] = 10;
-	}
+	fractol->img.buff[calc] = color & 0xff;
+	fractol->img.buff[calc + 1] = (color >> 8) & 0xff;
+	fractol->img.buff[calc + 2] = (color >> 16) & 0xff;
+	if (x > 1094)
+		fractol->img.buff[calc + 3] = 90;
 	else
-	{
-		fractol->img.buff[calc] = color & 0xff;
-		fractol->img.buff[calc + 1] = (color >> 8) & 0xff;
-		fractol->img.buff[calc + 2] = (color >> 16) & 0xff;
-		if (x > 1094)
-			fractol->img.buff[calc + 3] = 90;
-		else
-			fractol->img.buff[calc + 3] = 10;
-	}
+		fractol->img.buff[calc + 3] = 10;
 }
 
 void	set_background(t_fractol *fractol)

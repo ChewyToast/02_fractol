@@ -81,6 +81,12 @@ size_t	check_input(int argc, char **argv, char *set)
 			return (error_msg(1));
 		return (1);
 	}
+	else if (!ft_strncmp(argv[1], "burningship", 0xFFFFFF)
+		|| !ft_strncmp(argv[1], "Burningship", 0xFFFFFF))
+	{
+		*set = 'b';
+		return (1);
+	}
 	else if (!ft_strncmp(argv[1], "tricorn", 0xFFFFFF)
 		|| !ft_strncmp(argv[1], "Tricorn", 0xFFFFFF))
 	{

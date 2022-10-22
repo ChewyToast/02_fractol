@@ -16,10 +16,43 @@
 static int	ft_round(double num);
 static int	gradient(int startcolor, int endcolor, int len, int i);
 
-int	get_color_blue(int i, t_fractol *fractol)
+int	get_color(int i, t_fractol *fractol)
 {
+	if (i == fractol->iter_max)
+		return (0x1D1C1A);
 	return (gradient(fractol->setcolor.start, fractol->setcolor.end,
 			fractol->iter_max, i));
+}
+
+void	theme_select(t_fractol *fractol)
+{
+	fractol->setcolor.count++;
+	if (fractol->setcolor.count == 1)
+	{
+		fractol->setcolor.start = 0x001833;
+		fractol->setcolor.end = 0xFFE1AD;
+	}
+	else if (fractol->setcolor.count == 2)
+	{
+		fractol->setcolor.start = 0x003321;
+		fractol->setcolor.end = 0xFFCBBF;
+	}
+	else if (fractol->setcolor.count == 3)
+	{
+		fractol->setcolor.start = 0x403801;
+		fractol->setcolor.end = 0xD3BFFF;
+	}
+	else if (fractol->setcolor.count == 4)
+	{
+		fractol->setcolor.start = 0x331E0C;
+		fractol->setcolor.end = 0xBFF4FF;
+	}
+	else
+	{
+		fractol->setcolor.start = 0x250040;
+		fractol->setcolor.end = 0xF7FFBF;
+		fractol->setcolor.count = 0;
+	}
 }
 
 static int	gradient(int startcolor, int endcolor, int len, int i)

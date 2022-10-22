@@ -31,8 +31,7 @@ static size_t	program_startup(char select, char **argv)
 {
 	t_fractol	fractol;
 
-	if (!init_fract(&fractol, select, argv))
-		return (0);
+	init_fractol(&fractol, select, argv);
 	if (!window_startup(&fractol))
 		end_fractol(&fractol);
 	fractol_hooks(&fractol);
