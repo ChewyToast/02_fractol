@@ -117,10 +117,10 @@ int	mlx_loop (void *mlx_ptr);
 **  Usually asked...
 */
 
-int	mlx_string_put2(void *mlx_ptr, void *win_ptr, int x, int y, int color,
+int	mlx_str_put2(void *mlx_ptr, void *win_ptr, int x, int y, int color,
 		       char *string);
 
-int	mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color,
+int	mlx_str_put(void *mlx_ptr, void *win_ptr, int x, int y, int color,
 		       char *string);
 void	*mlx_xpm_to_image(void *mlx_ptr, char **xpm_data,
 			  int *width, int *height);

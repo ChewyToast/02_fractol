@@ -15,10 +15,10 @@
 void	drawer(t_fractol *fractol)
 {
 	set_background(fractol);
-	mlx_put_image_to_window(PTR,
-		WIN, fractol->screen.img, 0, 0);
+	mlx_put_image_to_window(fractol->screen.ptr,
+		fractol->screen.win, fractol->screen.img, 0, 0);
 	screen_iterate(fractol);
 	mdrawer(fractol);
-	mlx_put_image_to_window(PTR,
-		WIN, fractol->screen.img, 0, 0);
+	mlx_put_image_to_window(fractol->screen.ptr,
+		fractol->screen.win, fractol->screen.img, 0, 0);
 }

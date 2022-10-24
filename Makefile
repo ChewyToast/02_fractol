@@ -121,6 +121,7 @@ GSU_FLAGS =		--remote --merge --recursive
 #	----------------------------------------	COLORS
 
 # Colors
+DEL_LINE =		\033[2K
 ITALIC =		\033[3m
 BOLD =			\033[1m
 DEF_COLOR =		\033[0;39m
@@ -175,31 +176,26 @@ reall:
 					@$(MAKE) all
 
 $(NAME) ::			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
-					@printf "\r                                                                                                      "
-					@printf "\r Compiling $@"
+					@printf "$(DEL_LINE)\r Compiling $@"
 					@$(GCC) $(FLAGS) $^ $(BMLIB) $(MINILIBXCC) $(OPENGL) -o $@
 
 $(NAME) ::
-					@printf "\r$(BOLD)$(DARK_GREEN)FRACTOL COMPILED ✅$(DEF_COLOR)\n"
+					@printf "$(DEL_LINE)\r$(BOLD)$(DARK_GREEN)FRACTOL COMPILED ✅$(DEF_COLOR)\n"
 
 $(DRW_DIR)%.o :		$(DRW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@printf "\r                                                                                                      "
-					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(MLXW_DIR)%.o :	$(MLXW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@printf "\r                                                                                                      "
-					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(STRT_DIR)%.o :	$(STRT_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@printf "\r                                                                                                      "
-					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 $(UTIL_DIR)%.o :	$(UTIL_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@printf "\r                                                                                                      "
-					@printf "\r$(GCC) $(FLAGS) -c $< -o $@"
+					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 .PHONY:			all update clean fclean re reall

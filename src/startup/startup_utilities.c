@@ -12,99 +12,85 @@
 #include "fractol.h"
 #include "mlx_and_struct.h"
 
+static int	check_value(char *value);
+static int	extra_check_value(char *value);
+
+//	Main function of the check input steep
+size_t	check_input(int argc, char **argv)
+{
+	if (argc == 2 && (!ft_strncmp(argv[1], "mandelbrot", 0xFFFFFF)
+			|| !ft_strncmp(argv[1], "julia", 0xFFFFFF)
+			|| !ft_strncmp(argv[1], "tricorn", 0xFFFFFF)
+			|| !ft_strncmp(argv[1], "burningship", 0xFFFFFF)))
+		return (1);
+	else if (argc == 4 && !ft_strncmp(argv[1], "julia", 0xFFFFFF))
+	{
+		if (!check_value(argv[2]) || !check_value(argv[3]))
+			return (0);
+	}
+	else
+		return (0);
+	return (1);
+}
+
+static int	check_value(char *value)
+{
+	char	*point;
+
+	if (*value == '+' || *value == '-')
+		value++;
+	point = ft_strchr(value, '.');
+	if (point && point - value <= 1 && ft_strlen(value) - ft_strlen(point) <= 2)
+		return (extra_check_value(value));
+	else if (!point && ft_strlen(value) <= 1)
+		return (extra_check_value(value));
+	return (0);
+}
+
+static int	extra_check_value(char *value)
+{
+	char	point;
+
+	point = 0;
+	while (*value)
+	{
+		if (*value == '+' || *value == '-')
+			return (0);
+		if (*value >= '0' && *value <= '9')
+			value++;
+		else if (*value == '.' && point == 0)
+		{
+			value++;
+			point++;
+		}
+		else
+			return (0);
+	}
+	return (1);
+}
+
 //	Has its name suggests, this function display the error and return 0
 size_t	error_msg(int mode)
 {
 	if (mode == 6)
 	{
-		ft_printf("Unexpected error");
+		ft_printf("\033[0;91mUnexpected error\033[0;39m");
 		return (0);
 	}
-	if (mode == 1)
+	else
 	{
-		ft_printf("Invalid number of arguments\n");
-	}
-	else if (mode == 2)
-	{
-		ft_printf("Invalid input values for the fractal,");
+		ft_printf("\033[0;91mInvalid input \033[0;39m");
 		ft_printf("make sure you are entering values correctly:\n");
 	}
-	else if (mode == 5)
-		ft_printf("\nError\n");
-	ft_printf("\nEnter the desired fractal as follows:\n");
-	ft_printf("- For Mandelbrod set type: mandelbrod\n");
-	ft_printf("- For Julia set type: julia (x value) (i value)\n");
-	ft_printf("\nExample: Julia -0.6 -0.4\n");
+	ft_printf("\nEnter the desired fractal as follows:");
+	ft_printf("\n⚜️  For \033[4mMandelbrod\033[0m set type: mandelbrot.");
+	ft_printf("\n⚜️  For \033[4mJulia\033[0m set type: julia;");
+	ft_printf(" or julia \033[3m(x value) (i value)\033[0m.");
+	ft_printf("\n⚜️  For \033[4mTricorn\033[0m set type: tricorn");
+	ft_printf("\n⚜️  For \033[4mBurning\033[0m Ship set type: burningship");
+	ft_printf("\n\nRemember that the Julia set is only drawn ");
+	ft_printf("between small values so only ");
+	ft_printf("\ninputs between 9 and -9 and with up to ");
+	ft_printf("2 decimal places will be accepted\n");
 	return (0);
-}
-
-//	Function to see if he written correctly the input values for the Julia set
-static size_t	check_input_num(char *num, int symb, int point)
-{
-	size_t	size;
-
-	size = 0;
-	while (*num)
-	{
-		if ((*num < 48 || *num > 57))
-		{
-			if ((*num == '+' || *num == '-') && symb)
-				return (0);
-			else if (*num == '.' && point)
-				return (0);
-			else if ((*num == '+' || *num == '-') && !symb)
-				symb = 1;
-			else if (*num == '.' && !point)
-				point = 1;
-			else
-				return (0);
-		}
-		else
-			size++;
-		num++;
-	}
-	if (size < 1)
-		return (0);
-	return (1);
-}
-
-//	Main function of the check input steep
-size_t	check_input(int argc, char **argv, char *set)
-{
-	if (argc < 2 || argc > 4)
-		return (error_msg(1));
-	if (!ft_strncmp(argv[1], "Mandelbrot", 0xFFFFFF)
-		|| !ft_strncmp(argv[1], "mandelbrot", 0xFFFFFF))
-	{
-		*set = 'm';
-		if (argc > 2)
-			return (error_msg(1));
-		return (1);
-	}
-	else if (!ft_strncmp(argv[1], "burningship", 0xFFFFFF)
-		|| !ft_strncmp(argv[1], "Burningship", 0xFFFFFF))
-	{
-		*set = 'b';
-		return (1);
-	}
-	else if (!ft_strncmp(argv[1], "tricorn", 0xFFFFFF)
-		|| !ft_strncmp(argv[1], "Tricorn", 0xFFFFFF))
-	{
-		*set = 't';
-		return (1);
-	}
-	else if (!ft_strncmp(argv[1], "Julia", 0xFFFFFF)
-		|| !ft_strncmp(argv[1], "julia", 0xFFFFFF))
-	{
-		*set = 'j';
-		if (argc != 4 && argc != 2)
-			return (error_msg(1));
-		if (argc == 2)
-			return (1);
-		else if (!check_input_num(argv[2], 0, 0)
-			|| !check_input_num(argv[3], 0, 0))
-			return (error_msg(2));
-		return (1);
-	}
-	return (error_msg(2));
 }

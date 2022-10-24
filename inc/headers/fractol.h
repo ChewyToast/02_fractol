@@ -26,9 +26,9 @@
 // 						~ FUNCTIONS ~
 
 //		startup
-size_t	check_input(int argc, char **argv, char *set);
+size_t	check_input(int argc, char **argv);
 size_t	error_msg(int mode);
-void	init_fractol(t_fractol *fractol, char select, char **argv);
+void	init_fractol(t_fractol *fractol, char **argv);
 void	startup_pxl_buff(t_fractol *fractol, char *pxl_buff);
 
 //		mlx_window

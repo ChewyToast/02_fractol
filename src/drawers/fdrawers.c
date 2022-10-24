@@ -50,11 +50,11 @@ static	void	func_prepare(t_fractol *fractol, int x, int y)
 	else if (fractol->set == 'j')
 	{
 		fractol->setvalue.xiter = (1.5 * (x - (W >> 1))
-						/ (fractol->setvalue.zoom * (W >> 1))
-						+ (fractol->setvalue.xcenter));
+				/ (fractol->setvalue.zoom * (W >> 1))
+				+ (fractol->setvalue.xcenter));
 		fractol->setvalue.yiter = ((y - (H >> 1))
-						/ (fractol->setvalue.zoom * (H >> 1))
-						+ (fractol->setvalue.ycenter));
+				/ (fractol->setvalue.zoom * (H >> 1))
+				+ (fractol->setvalue.ycenter));
 	}
 }
 
@@ -64,24 +64,25 @@ static int	function_iterate(t_fractol *fractol)
 	double	old_x_iter;
 	double	old_y_iter;
 
-	i = 0;
-	while (i < fractol->iter_max
-		&& ((XIT * XIT + YIT * YIT) < 4))
+	i = -1;
+	while (++i < fractol->iter_max
+		&& ((fractol->setvalue.xiter * fractol->setvalue.xiter
+				+ fractol->setvalue.yiter * fractol->setvalue.yiter) < 4))
 	{
 		if (fractol->set == 'b')
 		{
-			old_x_iter = fabs(XIT);
-			old_y_iter = fabs(YIT);
+			old_x_iter = fabs(fractol->setvalue.xiter);
+			old_y_iter = fabs(fractol->setvalue.yiter);
 		}
 		else
 		{
-			old_x_iter = XIT;
-			old_y_iter = YIT;
+			old_x_iter = fractol->setvalue.xiter;
+			old_y_iter = fractol->setvalue.yiter;
 		}
-		XIT = (((old_x_iter * old_x_iter)
+		fractol->setvalue.xiter = (((old_x_iter * old_x_iter)
 					- (old_y_iter * old_y_iter)) + (fractol->setvalue.cx));
-		YIT = VAL * old_x_iter * old_y_iter + (fractol->setvalue.cy);
-		i++;
+		fractol->setvalue.yiter = fractol->setvalue.value * old_x_iter
+			* old_y_iter + (fractol->setvalue.cy);
 	}
 	return (i);
 }

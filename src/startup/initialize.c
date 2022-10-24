@@ -14,11 +14,11 @@
 
 static void	conditionals(t_fractol *fractol, char **argv);
 
-void	init_fractol(t_fractol *fractol, char select, char **argv)
+void	init_fractol(t_fractol *fractol, char **argv)
 {
-	PTR = NULL;
-	WIN = NULL;
-	fractol->set = select;
+	fractol->screen.ptr = NULL;
+	fractol->screen.win = NULL;
+	fractol->set = argv[1][0];
 	fractol->iter_max = 50;
 	fractol->plus_iter = 50;
 	fractol->shift_press = 0;
@@ -46,9 +46,9 @@ static void	conditionals(t_fractol *fractol, char **argv)
 		fractol->setvalue.cy = double_atoi(argv[3], 0, 1);
 	}
 	if (fractol->set == 't')
-		VAL = -2;
+		fractol->setvalue.value = -2;
 	else
-		VAL = 2;
+		fractol->setvalue.value = 2;
 	if (fractol->set == 'm')
 		fractol->setvalue.xcenter = -0.45;
 }

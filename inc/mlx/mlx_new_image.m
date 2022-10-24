@@ -108,7 +108,7 @@ unsigned int    mlx_get_color_value(mlx_ptr_t *mlx_ptr, int color)
   return (color);
 }
 
-int mlx_string_put2(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color, unsigned char *string)
+int mlx_str_put2(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color, unsigned char *string)
 {
   mlx_img_ctx_t *imgctx;
   int       gX;
@@ -136,7 +136,7 @@ int mlx_string_put2(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, i
   return (0);
 }
 
-int mlx_string_put(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color, unsigned char *string)
+int mlx_str_put(mlx_ptr_t *mlx_ptr, mlx_win_list_t *win_ptr, int x, int y, int color, unsigned char *string)
 {
   mlx_img_ctx_t	*imgctx;
   int		gX;

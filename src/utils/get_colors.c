@@ -39,11 +39,6 @@ void	theme_select(t_fractol *fractol)
 	}
 	else if (fractol->setcolor.count == 3)
 	{
-		fractol->setcolor.start = 0x403801;
-		fractol->setcolor.end = 0xD3BFFF;
-	}
-	else if (fractol->setcolor.count == 4)
-	{
 		fractol->setcolor.start = 0x331E0C;
 		fractol->setcolor.end = 0xBFF4FF;
 	}

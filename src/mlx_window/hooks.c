@@ -19,7 +19,7 @@ int	mouse_loop(t_fractol *fractol)
 
 	if (fractol->set == 'j' && fractol->shift_press == 1)
 	{
-		mlx_mouse_get_pos(WIN, &x, &y);
+		mlx_mouse_get_pos(fractol->screen.win, &x, &y);
 		fractol->setvalue.cx = (double)(x
 				* (4 / fractol->setvalue.zoom)
 				/ W - (2 / fractol->setvalue.zoom));
@@ -34,10 +34,10 @@ int	mouse_loop(t_fractol *fractol)
 void	fractol_hooks(t_fractol *fractol)
 {
 	drawer(fractol);
-	mlx_hook(WIN, 2, 0, mlx_keypress, fractol);
-	mlx_hook(WIN, 3, 0, mlx_keyrelase, fractol);
-	mlx_hook(WIN, 4, 0, mlx_mousepress, fractol);
-	mlx_hook(WIN, 17, 0, end_fractol, fractol);
-	mlx_loop_hook(PTR, mouse_loop, fractol);
-	mlx_loop(PTR);
+	mlx_hook(fractol->screen.win, 2, 0, mlx_keypress, fractol);
+	mlx_hook(fractol->screen.win, 3, 0, mlx_keyrelase, fractol);
+	mlx_hook(fractol->screen.win, 4, 0, mlx_mousepress, fractol);
+	mlx_hook(fractol->screen.win, 17, 0, end_fractol, fractol);
+	mlx_loop_hook(fractol->screen.ptr, mouse_loop, fractol);
+	mlx_loop(fractol->screen.ptr);
 }

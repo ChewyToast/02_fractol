@@ -14,13 +14,13 @@
 
 int	window_startup(t_fractol *fractol)
 {
-	PTR = mlx_init();
-	if (!PTR)
+	fractol->screen.ptr = mlx_init();
+	if (!fractol->screen.ptr)
 		return (0);
-	WIN = mlx_new_window(PTR, W, H, "fractol");
-	if (!WIN)
+	fractol->screen.win = mlx_new_window(fractol->screen.ptr, W, H, "fractol");
+	if (!fractol->screen.win)
 		return (0);
-	fractol->screen.img = mlx_new_image(PTR, W, H);
+	fractol->screen.img = mlx_new_image(fractol->screen.ptr, W, H);
 	if (!fractol->screen.img)
 		return (0);
 	fractol->img.buff = mlx_get_data_addr(fractol->screen.img,
@@ -33,10 +33,10 @@ int	window_startup(t_fractol *fractol)
 
 int	end_fractol(t_fractol *fractol)
 {
-	if (PTR && fractol->screen.img)
-		mlx_destroy_image(PTR, fractol->screen.img);
-	if (PTR && WIN)
-		mlx_destroy_window(PTR, WIN);
+	if (fractol->screen.ptr && fractol->screen.img)
+		mlx_destroy_image(fractol->screen.ptr, fractol->screen.img);
+	if (fractol->screen.ptr && fractol->screen.win)
+		mlx_destroy_window(fractol->screen.ptr, fractol->screen.win);
 	ft_printf("END OF FRACTOL\n");
 	exit (0);
 }
