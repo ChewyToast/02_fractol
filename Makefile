@@ -89,7 +89,7 @@ OBJ_STRT =		$(SRC_STRT:.c=.o)
 # All the objects of utils
 OBJ_UTIL =		$(SRC_UTIL:.c=.o)
 
-#	----------------------------------------	OBJECTS
+#	----------------------------------------	DEPENDENCIES
 
 # All dependencies
 ALL_DEPS =		$(SRC_DRW:.c=.d) $(SRC_MLXW:.c=.d)
@@ -116,7 +116,7 @@ MAKE_MLX =		inc/mlx
 GCC =			gcc
 
 # Flags for the gcc compilation
-FLAGS =			-Wall -Werror -Wextra -MMD -O3
+FLAGS =			-Wall -Werror -Wextra -MMD -MP
 
 MINILIBXCC :=	-I mlx -L $(DIR_MLX) -lmlx
 
@@ -187,8 +187,6 @@ reall:
 					@$(MAKE) fcleanall
 					@$(MAKE) all
 
--include $(DEPS)
-
 $(NAME) ::			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 					@printf "$(DEL_LINE)\r Compiling $@"
 					@$(GCC) $(FLAGS) $^ $(BMLIB) $(MINILIBXCC) $(OPENGL) -o $@
@@ -200,21 +198,8 @@ $(NAME) ::
 					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-#$(DRW_DIR)%.o :		$(DRW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
-#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
-#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
-
-#$(MLXW_DIR)%.o :	$(MLXW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
-#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
-#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
-
-#$(STRT_DIR)%.o :	$(STRT_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
-#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
-#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
-
-#$(UTIL_DIR)%.o :	$(UTIL_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
-#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
-#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
+# Include the deps when compile
+-include $(ALL_DEPS)
 
 .PHONY:			all update clean fclean re reall
 

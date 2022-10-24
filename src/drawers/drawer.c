@@ -18,7 +18,8 @@ void	drawer(t_fractol *fractol)
 	mlx_put_image_to_window(fractol->screen.ptr,
 		fractol->screen.win, fractol->screen.img, 0, 0);
 	screen_iterate(fractol);
-	mdrawer(fractol);
+	if (!fractol->m_press)
+		mdrawer(fractol);
 	mlx_put_image_to_window(fractol->screen.ptr,
 		fractol->screen.win, fractol->screen.img, 0, 0);
 }

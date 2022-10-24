@@ -72,6 +72,7 @@ struct s_fractol
 	int			plus_iter;
 	int			iter_max;
 	_Bool		shift_press;
+	_Bool		m_press;
 };
 
 //	Defines
@@ -83,6 +84,8 @@ struct s_fractol
 # define GSC "For more or less resolution"
 # define GSD "press 'Q' or 'W':"
 # define GSE "If u feel lost press 'C'"
+# define GSF "Hide / show the menu"
+# define GSG "press the 'M'"
 
 # define MSA "MANDELBROT SET"
 # define MSB "--------------------"

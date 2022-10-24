@@ -83,7 +83,7 @@ size_t	error_msg(int mode)
 		ft_printf("make sure you are entering values correctly:\n");
 	}
 	ft_printf("\nEnter the desired fractal as follows:");
-	ft_printf("\n⚜️  For \033[4mMandelbrod\033[0m set type: mandelbrot.");
+	ft_printf("\n⚜️  For \033[4mMandelbrot\033[0m set type: mandelbrot.");
 	ft_printf("\n⚜️  For \033[4mJulia\033[0m set type: julia;");
 	ft_printf(" or julia \033[3m(x value) (i value)\033[0m.");
 	ft_printf("\n⚜️  For \033[4mTricorn\033[0m set type: tricorn");

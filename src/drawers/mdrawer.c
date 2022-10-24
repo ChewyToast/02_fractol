@@ -31,6 +31,8 @@ void	mdrawer(t_fractol *fractol)
 		mburningship(fractol);
 	else if (fractol->set == 't')
 		mtricorn(fractol);
+	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 560, PCL, GSF);
+	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 575, PCL, GSG);
 	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 630, PCL, GSA);
 	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 645, PCL, GSB);
 	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 700, PCL, GSC);
@@ -75,8 +77,8 @@ static void	mjulia(t_fractol *fractol)
 	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1129, 240, PCL, JSJ);
 	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1118, 260, PCL, JSK);
 	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1160, 285, PCL, JSL);
-	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 560, PCL, JSM);
-	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 575, PCL, JSN);
+	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 490, PCL, JSM);
+	mlx_str_put(fractol->screen.ptr, fractol->screen.win, 1100, 505, PCL, JSN);
 }
 
 static void	mtricorn(t_fractol *fractol)

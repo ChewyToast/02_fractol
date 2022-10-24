@@ -16,12 +16,13 @@ static void	conditionals(t_fractol *fractol, char **argv);
 
 void	init_fractol(t_fractol *fractol, char **argv)
 {
-	fractol->screen.ptr = NULL;
-	fractol->screen.win = NULL;
-	fractol->set = argv[1][0];
+	fractol->m_press = 0;
 	fractol->iter_max = 50;
 	fractol->plus_iter = 50;
 	fractol->shift_press = 0;
+	fractol->set = argv[1][0];
+	fractol->screen.win = NULL;
+	fractol->screen.ptr = NULL;
 	fractol->screen.img = NULL;
 	fractol->setcolor.count = 0;
 	fractol->setvalue.zoom = 0.5;

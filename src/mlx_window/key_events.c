@@ -45,6 +45,10 @@ static void	cli_ask(int key, t_fractol *fractol)
 		fractol->shift_press = 1;
 	else if (key == 17)
 		theme_select(fractol);
+	else if (key == 46 && fractol->m_press)
+		fractol->m_press = 0;
+	else if (key == 46 && !fractol->m_press)
+		fractol->m_press = 1;
 }
 
 static void	move_center(int key, t_fractol *fractol)

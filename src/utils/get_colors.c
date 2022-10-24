@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "mlx_and_struct.h"
-#include "fractol.h"
 
 // static void	hsv_rgb(int h, int s, int v, t_fractol *fractol);
 static int	ft_round(double num);

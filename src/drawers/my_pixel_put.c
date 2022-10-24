@@ -20,7 +20,7 @@ void	my_pixel_put(t_fractol *fractol, int x, int y, int color)
 	fractol->img.buff[calc] = color & 0xff;
 	fractol->img.buff[calc + 1] = (color >> 8) & 0xff;
 	fractol->img.buff[calc + 2] = (color >> 16) & 0xff;
-	if (x > 1094)
+	if (x > 1094 && !fractol->m_press)
 		fractol->img.buff[calc + 3] = 90;
 	else
 		fractol->img.buff[calc + 3] = 10;

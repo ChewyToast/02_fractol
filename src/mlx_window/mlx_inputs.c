@@ -16,6 +16,7 @@ int	mlx_keyrelase(int key, t_fractol *fractol)
 {
 	if (key == 257)
 		fractol->shift_press = 0;
+	drawer(fractol);
 	return (1);
 }
 
