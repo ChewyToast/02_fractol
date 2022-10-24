@@ -17,7 +17,6 @@ static void	move_center(int key, t_fractol *fractol);
 
 void	key_compare(int key, t_fractol *fractol)
 {
-	ft_printf("\nKEY: %d\n", key);
 	if (key == 53)
 		end_fractol(fractol);
 	else if (key == 126 || (key == 125)

@@ -15,6 +15,9 @@
 # Name value
 NAME =			fractol
 
+# Makefile file
+MKF =			Makefile
+
 #	----------------------------------------	FILES
 
 # All the source of drawers
@@ -86,6 +89,13 @@ OBJ_STRT =		$(SRC_STRT:.c=.o)
 # All the objects of utils
 OBJ_UTIL =		$(SRC_UTIL:.c=.o)
 
+#	----------------------------------------	OBJECTS
+
+# All dependencies
+ALL_DEPS =		$(SRC_DRW:.c=.d) $(SRC_MLXW:.c=.d)
+
+ALL_DEPS +=		$(SRC_STRT:.c=.d) $(SRC_UTIL:.c=.d)
+
 #	----------------------------------------	LIBRARIES
 
 # Bmlib libraries
@@ -103,10 +113,10 @@ MAKE_MLX =		inc/mlx
 #	----------------------------------------	COMPILATION
 
 # Variable to compile .c files
-GCC =			gcc -o3
+GCC =			gcc
 
 # Flags for the gcc compilation
-FLAGS =			-Wall -Werror -Wextra
+FLAGS =			-Wall -Werror -Wextra -MMD -O3
 
 MINILIBXCC :=	-I mlx -L $(DIR_MLX) -lmlx
 
@@ -153,10 +163,12 @@ update:
 					@$(GSU) $(GSU_FLAGS)
 
 clean:
+					@rm -f $(ALL_DEPS)
 					@rm -f $(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 					@printf "All fractol objects removed\n"
 
 fclean:
+					@rm -f $(ALL_DEPS)
 					@rm -f $(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 					@rm -f $(NAME)
 					@printf "All fractol files $(RED)removed\n$(DEF_COLOR)"
@@ -175,6 +187,8 @@ reall:
 					@$(MAKE) fcleanall
 					@$(MAKE) all
 
+-include $(DEPS)
+
 $(NAME) ::			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 					@printf "$(DEL_LINE)\r Compiling $@"
 					@$(GCC) $(FLAGS) $^ $(BMLIB) $(MINILIBXCC) $(OPENGL) -o $@
@@ -182,21 +196,25 @@ $(NAME) ::			$(OBJ_DRW) $(OBJ_MLXW) $(OBJ_STRT) $(OBJ_UTIL)
 $(NAME) ::
 					@printf "$(DEL_LINE)\r$(BOLD)$(DARK_GREEN)FRACTOL COMPILED ✅$(DEF_COLOR)\n"
 
-$(DRW_DIR)%.o :		$(DRW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
+%.o :				%.c $(MKF)
 					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
 					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-$(MLXW_DIR)%.o :	$(MLXW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
-					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
+#$(DRW_DIR)%.o :		$(DRW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
+#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
+#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-$(STRT_DIR)%.o :	$(STRT_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
-					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
+#$(MLXW_DIR)%.o :	$(MLXW_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
+#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
+#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
-$(UTIL_DIR)%.o :	$(UTIL_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS)
-					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
-					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
+#$(STRT_DIR)%.o :	$(STRT_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
+#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
+#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
+
+#$(UTIL_DIR)%.o :	$(UTIL_DIR)%.c $(HEADER_FRAC) $(HEADER_MLXS) $(MKF)
+#					@printf "$(DEL_LINE)\rcompiling fractol file:\t$@"
+#					@$(GCC) $(FLAGS) -I$(DIR_HEDS) -c $< -o $@
 
 .PHONY:			all update clean fclean re reall
 
