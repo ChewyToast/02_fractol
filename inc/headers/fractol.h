@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42bcn>          +#+  +:+       +#+        */
+/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 01:23:12 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/08/16 01:24:12 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/10/25 17:55:25 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/10/25 17:55:40 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef FRACTOL_H
 # define FRACTOL_H
 

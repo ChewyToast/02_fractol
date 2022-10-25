@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdrawers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42bcn>          +#+  +:+       +#+        */
+/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 22:52:39 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/08/17 22:53:07 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/10/25 17:56:16 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/10/25 17:56:24 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "mlx_and_struct.h"

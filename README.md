@@ -21,7 +21,6 @@
 <img width="250.5">
 <p>Status</p>
 </th>
- 
   
 <tr>
 <td align="center"><a href=https://github.com/ChewyToast/02_fractol><img src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/02_fractol.png"><a/></td>

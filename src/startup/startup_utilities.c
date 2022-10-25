@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ut1.c                                              :+:      :+:    :+:   */
+/*   startup_utilities.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42bcn>          +#+  +:+       +#+        */
+/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 01:18:20 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/08/16 01:18:42 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/10/25 17:58:35 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/10/25 17:58:38 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractol.h"
@@ -75,7 +75,6 @@ size_t	error_msg(int mode)
 	if (mode == 6)
 	{
 		write(2, "\033[0;91mUnexpected error\033[0;39m\n", 31);
-//		ft_printf("\033[0;91mUnexpected error\033[0;39m");
 		return (0);
 	}
 	else
