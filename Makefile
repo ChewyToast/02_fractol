@@ -113,7 +113,7 @@ MAKE_MLX =		inc/mlx
 #	----------------------------------------	COMPILATION
 
 # Variable to compile .c files
-GCC =			gcc
+GCC =			gcc -o3
 
 # Flags for the gcc compilation
 FLAGS =			-Wall -Werror -Wextra -MMD -MP

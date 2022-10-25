@@ -74,13 +74,14 @@ size_t	error_msg(int mode)
 {
 	if (mode == 6)
 	{
-		ft_printf("\033[0;91mUnexpected error\033[0;39m");
+		write(2, "\033[0;91mUnexpected error\033[0;39m\n", 31);
+//		ft_printf("\033[0;91mUnexpected error\033[0;39m");
 		return (0);
 	}
 	else
 	{
-		ft_printf("\033[0;91mInvalid input \033[0;39m");
-		ft_printf("make sure you are entering values correctly:\n");
+		write(2, "\033[0;91mInvalid input\033[0;39m", 27);
+		ft_printf(" make sure you are entering values correctly:\n");
 	}
 	ft_printf("\nEnter the desired fractal as follows:");
 	ft_printf("\n⚜️  For \033[4mMandelbrot\033[0m set type: mandelbrot.");
