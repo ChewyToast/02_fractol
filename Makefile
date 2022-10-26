@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+         #
+#    By: bmoll-pe <bmoll-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 18:00:24 by bmoll-pe          #+#    #+#              #
-#    Updated: 2022/10/25 18:00:30 by bmoll-pe         ###   ########.fr        #
+#    Updated: 2022/10/26 17:55:33 by bmoll-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,7 @@ FLAGS =			-Wall -Werror -Wextra -MMD -MP
 
 MINILIBXCC :=	-I mlx -L $(DIR_MLX) -lmlx
 
-OPENGL			:= -framework OpenGL -framework AppKit
+OPENGL :=		-framework OpenGL -framework AppKit
 
 # Git submodule update
 GSU =			git submodule update
