@@ -26,7 +26,7 @@
 <td align="center"><a href=https://github.com/ChewyToast/02_fractol><img src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/02_fractol.png"><a/></td>
 <td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/logo_c.jpg"><a/></td>
 <td align="center">The objective of the project is to create a fractal exploration program, learning to use the MinilibX library.</td>
-<td align="center">WORKING⚒️<a/></td>
+<td align="center"><a href="href=https://github.com/ChewyToast/02_fractol"><img src="https://badge42.vercel.app/api/v2/cl8a35p1o00060hjtc2e3ktt3/project/2829601" alt="bmoll-pe's 42 fractol Score" /></a><a/></td>
 </tr>
   
 ALL 42 PROJECTS HERE: [42_Cursus](https://github.com/ChewyToast/42_Cursus)
