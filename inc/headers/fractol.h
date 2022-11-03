@@ -12,7 +12,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-// 						~ LIBRARYS ~
+// 						~ LIBRARIES ~
 
 # include "mlx_and_struct.h"
 
