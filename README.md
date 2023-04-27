@@ -2,6 +2,12 @@
 
 Fractol is a graphics project from the 42 curriculum, in which you implement a program that generates fractals of different types. The program uses the miniLibX graphics library to display the fractals in a window.
 
+</br>
+<p align="center">
+	<img src="https://github.com/ChewyToast/02_fractol/.img.mandelbrot.png" />
+</p>
+</br>
+
 ## Table of Contents
 
 * [Installation](#installation)
