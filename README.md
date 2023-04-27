@@ -4,7 +4,8 @@ Fractol is a graphics project from the 42 curriculum, in which you implement a p
 
 </br>
 <p align="center">
-	<img src="https://github.com/ChewyToast/02_fractol/.img/mandelbrot.png" />
+	<img src="https://github.com/ChewyToast/02_fractol/blob/master/.img/mandelbrot.png" style="width:49%"/>
+	<img src="https://github.com/ChewyToast/02_fractol/blob/master/.img/julia.mov" style="width:49%"/>
 </p>
 </br>
 
